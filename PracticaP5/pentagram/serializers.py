@@ -28,7 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('id', 'user', 'photo_id', 'comment')
+        fields = ('id', 'user', 'photo', 'comment')
 
     def create(self, validated_data):
         comment = Comment.objects.create(**validated_data)

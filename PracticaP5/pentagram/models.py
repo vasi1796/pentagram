@@ -17,7 +17,7 @@ class Photo(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
-    photo_id = models.ForeignKey(Photo)
+    photo = models.ForeignKey(Photo)
     comment = models.TextField(null=False)
 
 

@@ -33,11 +33,11 @@ def users(request):
 @api_view(['GET', 'POST'])
 def comments(request, id_photo):
     if request.method == 'GET':
-        comments = Comment.objects.filter(photo_id=id_photo)
+        comments = Comment.objects.filter(photo=id_photo)
         serializer = CommentSerializer(comments, many=True)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
     if request.method == 'POST':
-        request.POST['photo_id'] = id_photo
+        request.POST['photo'] = id_photo
         comment_serializer = CommentSerializer(data=request.data)
         if comment_serializer.is_valid():
             comment_serializer.save()
