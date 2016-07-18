@@ -37,6 +37,7 @@ def comments(request, id_photo):
         serializer = CommentSerializer(comments, many=True)
         return Response(status=status.HTTP_200_OK, data=serializer.data)
     if request.method == 'POST':
+        request.POST['photo_id'] = id_photo
         comment_serializer = CommentSerializer(data=request.data)
         if comment_serializer.is_valid():
             comment_serializer.save()
@@ -51,3 +52,5 @@ def like(request, id_photo):
         photo.counter_like += 1
         photo.save()
         return Response(status=status.HTTP_202_ACCEPTED)
+
+        # new table for like/unlike and counter

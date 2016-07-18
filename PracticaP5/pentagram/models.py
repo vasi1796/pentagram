@@ -19,3 +19,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User)
     photo_id = models.ForeignKey(Photo)
     comment = models.TextField(null=False)
+
+
+class User(User):
+    pass
