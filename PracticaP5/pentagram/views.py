@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from pentagram.models import Photo, Comment
+from pentagram.models import Photo, Comment, Like
 from pentagram.serializers import PhotoSerializer, UserSerializer, CommentSerializer
 
 
@@ -45,12 +46,15 @@ def comments(request, id_photo):
         return Response(status=status.HTTP_400_BAD_REQUEST, data=comment_serializer.errors)
 
 
-@api_view(['PUT'])
+@api_view(['GET', 'POST'])
 def like(request, id_photo):
-    if request.method == 'PUT':
-        photo = Photo.objects.get(pk=id_photo)
-        photo.counter_like += 1
-        photo.save()
-        return Response(status=status.HTTP_202_ACCEPTED)
-
-        # new table for like/unlike and counter
+    if request.method == 'GET':
+        counter = Like.objects.filter(photo_id=id_photo).count()
+        return Response(status=status.HTTP_302_FOUND, data=counter)
+    if request.method == 'POST':
+        if not (Like.objects.filter(photo=id_photo, user=request.user.id).count() == 0):
+            Like.objects.filter(photo=id_photo, user=request.user.id).delete()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        else:
+            Like.objects.create(photo_id=id_photo, user=request.user).save()
+            return Response(status=status.HTTP_201_CREATED)

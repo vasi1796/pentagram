@@ -11,7 +11,6 @@ def photos_directory(instance, filename):
 
 class Photo(models.Model):
     user = models.ForeignKey(User)
-    counter_like = models.IntegerField(default=0)
     photo = models.ImageField(upload_to=photos_directory, null=True)
 
 
@@ -21,5 +20,6 @@ class Comment(models.Model):
     comment = models.TextField(null=False)
 
 
-class User(User):
-    pass
+class Like(models.Model):
+    photo = models.ForeignKey(Photo)
+    user = models.ForeignKey(User)
