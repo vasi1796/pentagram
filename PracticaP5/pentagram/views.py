@@ -52,9 +52,9 @@ def like(request, id_photo):
         counter = Like.objects.filter(photo_id=id_photo).count()
         return Response(status=status.HTTP_302_FOUND, data=counter)
     if request.method == 'POST':
-        if not (Like.objects.filter(photo=id_photo, user=request.user.id).count() == 0):
-            Like.objects.filter(photo=id_photo, user=request.user.id).delete()
-            return Response(status=status.HTTP_205_RESET_CONTENT)
-        else:
+        if Like.objects.filter(photo=id_photo, user=request.user.id).count() == 0:
             Like.objects.create(photo_id=id_photo, user=request.user).save()
             return Response(status=status.HTTP_201_CREATED)
+        else:
+            Like.objects.filter(photo=id_photo, user=request.user.id).delete()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
