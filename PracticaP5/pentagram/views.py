@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from pentagram.models import Photo, Comment, Like
@@ -22,6 +22,7 @@ def photos(request):
 
 
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def users(request):
     if request.method == 'POST':
         user_serializer = UserSerializer(data=request.data)
@@ -49,6 +50,10 @@ def comments(request, id_photo):
 @api_view(['GET', 'POST'])
 def like(request, id_photo):
     if request.method == 'GET':
+        # for like from user at particular photo
+        # counter = Like.objects.filter(photo_id=id_photo,user=request.user).count()
+
+        # for likes from all users at particular photo
         counter = Like.objects.filter(photo_id=id_photo).count()
         return Response(status=status.HTTP_302_FOUND, data=counter)
     if request.method == 'POST':

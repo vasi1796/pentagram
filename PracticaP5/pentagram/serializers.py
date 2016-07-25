@@ -7,7 +7,7 @@ from pentagram.models import Photo, Comment
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ('id', 'counter_like', 'user', 'photo')
+        fields = ('id', 'user', 'photo')
 
     def create(self, validated_data):
         photo = Photo.objects.create(**validated_data)
