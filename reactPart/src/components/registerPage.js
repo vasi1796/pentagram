@@ -17,7 +17,7 @@ var Register = React.createClass({
     },
     render: function () {
         return (
-            <div className="text-center jumbotron">
+            <div className="text-center jumbotron z-depth-2">
                 <form>
                     <img src={'Images/logo1.png'} className="logo-resp"/>
                     <Input type="text"
@@ -41,7 +41,7 @@ var Register = React.createClass({
                            placeholder="Repeat Password"
                     />
                     <input type="Submit"
-                           className="btn-info btn-lg"
+                           className="waves-effect waves-light btn"
                            value="Register"/>
                 </form>
             </div>

@@ -16,22 +16,25 @@ body {
     background-size: cover;
 }
 
-.container-fluid{
+.container-fluid {
     width: 30%;
 }
 
 .jumbotron {
-   background: rgb(199, 199, 199); /* This is for ie8 and below */
-   background: rgba(255, 255, 255, 0.5);
+    background: rgb(199, 199, 199); /* This is for ie8 and below */
+    background: rgba(255, 254, 250, 0.75);
 }
 
-.logo-resp{
-    width:80%;
-    height:100%;
+.logo-resp {
+    width: 80%;
+    height: 100%;
 }
 
-.navbar-mini{
-    width:50%;
-    margin:auto;
+.navbar-mini {
+    width: 50%;
+    margin: auto;
     margin-bottom: 1%;
 }
+
+
+

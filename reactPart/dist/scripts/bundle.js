@@ -32074,10 +32074,11 @@ var Input = require('./common/textInput');
 var Login = React.createClass({displayName: "Login",
     render: function () {
         return (
-            React.createElement("div", {className: "text-center jumbotron"}, 
+            React.createElement("div", {className: "text-center jumbotron z-depth-2"}, 
                 React.createElement("form", null, 
                     React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
-                    React.createElement(Input, {type: "text", 
+                    React.createElement(Input, {className: "", 
+                            type: "text", 
                            name: "username", label: "", 
                            onChange: this.props.OnChange, 
                            placeholder: "Username"}
@@ -32088,7 +32089,7 @@ var Login = React.createClass({displayName: "Login",
                            placeholder: "Password"}
                     ), 
                     React.createElement("input", {type: "Submit", 
-                           className: "btn-info btn-lg", 
+                           className: "waves-effect waves-light btn", 
                            value: "Login"})
                 )
             )
@@ -32138,7 +32139,7 @@ var Register = React.createClass({displayName: "Register",
     },
     render: function () {
         return (
-            React.createElement("div", {className: "text-center jumbotron"}, 
+            React.createElement("div", {className: "text-center jumbotron z-depth-2"}, 
                 React.createElement("form", null, 
                     React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
                     React.createElement(Input, {type: "text", 
@@ -32162,7 +32163,7 @@ var Register = React.createClass({displayName: "Register",
                            placeholder: "Repeat Password"}
                     ), 
                     React.createElement("input", {type: "Submit", 
-                           className: "btn-info btn-lg", 
+                           className: "waves-effect waves-light btn", 
                            value: "Register"})
                 )
             )
