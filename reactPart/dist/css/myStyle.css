@@ -26,8 +26,8 @@ body {
 }
 
 .logo-resp {
-    width: 80%;
-    height: 100%;
+    width: 30%;
+    height: 30%;
 }
 
 .navbar-mini {
@@ -36,5 +36,12 @@ body {
     margin-bottom: 1%;
 }
 
+#accountMessage {
+    font-size: 90%;
+}
+
+.accountMessage{
+    padding:7%;
+}
 
 

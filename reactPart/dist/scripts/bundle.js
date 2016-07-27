@@ -32028,78 +32028,143 @@ module.exports = Header;
 var React = require('react');
 
 var Input = React.createClass({displayName: "Input",
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    label: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    placeholder: React.PropTypes.string,
-    value: React.PropTypes.string,
-    error: React.PropTypes.string
-  },
+    propTypes: {
+        name: React.PropTypes.string.isRequired,
+        onChange: React.PropTypes.func.isRequired,
+        placeholder: React.PropTypes.string,
+        error: React.PropTypes.string
+    },
+    render: function () {
+        var wrapperClass = 'form-group';
+        if (this.props.error && this.props.error.length > 0) {
+            wrapperClass += " " + 'has-error';
+        }
 
-  render: function () {
-    var wrapperClass = 'form-group';
-    if (this.props.error && this.props.error.length > 0) {
-      wrapperClass += " " + 'has-error';
+        return (
+            React.createElement("div", {className: wrapperClass}, 
+                React.createElement("label", {htmlFor: this.props.name}, this.props.label), 
+                React.createElement("div", {className: "field"}, 
+                    React.createElement("input", {type: "password", 
+                           name: "password", 
+                           className: "form-control", 
+                           placeholder: this.props.placeholder, 
+                           ref: this.props.name, 
+                           onChange: this.props.passwdChangeHandler}), 
+                    React.createElement("div", {className: "input"}, this.props.error)
+                )
+            )
+        );
     }
-    
-    return (
-     React.createElement("div", {className: wrapperClass}, 
-        React.createElement("label", {htmlFor: this.props.name}, this.props.label), 
-        React.createElement("div", {className: "field"}, 
-          React.createElement("input", {type: this.props.type, 
-            name: this.props.name, 
-            className: "form-control", 
-            placeholder: this.props.placeholder, 
-            ref: this.props.name, 
-            value: this.props.value, 
-            onChange: this.props.onChange}), 
-          React.createElement("div", {className: "input"}, this.props.error)
-        )
-      )
-    );
-  }
+});
+
+module.exports = Input;
+/**
+ * Created by vasy1 on 7/26/2016.
+ */
+},{"react":196}],200:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+
+var Input = React.createClass({displayName: "Input",
+    propTypes: {
+        name: React.PropTypes.string.isRequired,
+        onChange: React.PropTypes.func.isRequired,
+        placeholder: React.PropTypes.string,
+        error: React.PropTypes.string
+    },
+    render: function () {
+        var wrapperClass = 'form-group';
+        if (this.props.error && this.props.error.length > 0) {
+            wrapperClass += " " + 'has-error';
+        }
+
+        return (
+            React.createElement("div", {className: wrapperClass}, 
+                React.createElement("label", {htmlFor: this.props.name}, this.props.label), 
+                React.createElement("div", {className: "field"}, 
+                    React.createElement("input", {type: "text", 
+                           name: "username", 
+                           onChange: this.props.inputChangeHandler, 
+                           className: "form-control", 
+                           placeholder: this.props.placeholder, 
+                           ref: this.props.name}
+                    ), 
+                    React.createElement("div", {className: "input"}, this.props.error)
+                )
+            )
+        );
+    }
 });
 
 module.exports = Input;
 
-},{"react":196}],200:[function(require,module,exports){
+},{"react":196}],201:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 var Input = require('./common/textInput');
+var PassInput = require('./common/passwordInput');
 
 var Login = React.createClass({displayName: "Login",
+    getInitialState: function () {
+        return {
+            username: null,
+            password: null
+        };
+    }
+    , userChangeHandler: function (event) {
+        this.setState({username: event.target.value});
+    },
+    passwordChangeHandler: function (event) {
+        this.setState({password: event.target.value});
+    },
+    formSubmitHandler: function (event) {
+        event.preventDefault();
+        console.log(this.state);
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/v1/login/'
+            , type: 'POST'
+            , data: this.state
+        }).then(function (data) {
+            sessionStorage.setItem('authToken', data.token);
+            //redirect to homepage
+        });
+    },
     render: function () {
-        return (
-            React.createElement("div", {className: "text-center jumbotron z-depth-2"}, 
-                React.createElement("form", null, 
-                    React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
-                    React.createElement(Input, {className: "", 
-                            type: "text", 
-                           name: "username", label: "", 
-                           onChange: this.props.OnChange, 
-                           placeholder: "Username"}
-                    ), 
-                    React.createElement(Input, {type: "password", 
-                           name: "password", label: "", 
-                           onChange: this.props.OnChange, 
-                           placeholder: "Password"}
-                    ), 
-                    React.createElement("input", {type: "Submit", 
-                           className: "waves-effect waves-light btn", 
-                           value: "Login"})
+        return (React.createElement("div", null, 
+                React.createElement("div", {className: "text-center jumbotron z-depth-2"}, 
+                    React.createElement("form", null, 
+                        React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
+                        React.createElement(Input, {placeholder: "Username", 
+                               name: "username", 
+                               inputChangeHandler: this.userChangeHandler}
+                        ), 
+                        React.createElement(PassInput, {placeholder: "Password", 
+                                   name: "password", 
+                                   passwdChangeHandler: this.passwordChangeHandler}
+                        ), 
+                        React.createElement("input", {type: "Submit", 
+                               className: "waves-effect waves-light btn", 
+                               value: "Login", 
+                               onClick: this.formSubmitHandler})
+                    )
+                ), 
+                React.createElement("div", {className: "text-center jumbotron z-depth-2 accountMessage"}, 
+                    React.createElement("p", {id: "accountMessage"}, "Don't have an account?", React.createElement("br", null), 
+                        React.createElement(Link, {to: "register"}, " Sign Up"))
                 )
             )
-        );
+        )
+            ;
     }
 
 });
 
 module.exports = Login;
-},{"./common/textInput":199,"react":196,"react-router":27}],201:[function(require,module,exports){
+},{"./common/passwordInput":199,"./common/textInput":200,"react":196,"react-router":27}],202:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32119,7 +32184,7 @@ var NotFoundPage = React.createClass({displayName: "NotFoundPage",
 
 module.exports = NotFoundPage;
 
-},{"react":196,"react-router":27}],202:[function(require,module,exports){
+},{"react":196,"react-router":27}],203:[function(require,module,exports){
 /**
  * Created by vasy1 on 7/25/2016.
  */
@@ -32129,13 +32194,43 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 var Input = require('./common/textInput');
+var PassInput = require('./common/passwordInput');
 
 var Register = React.createClass({displayName: "Register",
     getInitialState: function () {
-        return {value: 'Username'};
+        return {
+            username: null,
+            password: null,
+            email: null
+        };
+    }
+    , userChangeHandler: function (event) {
+        this.setState({username: event.target.value});
     },
-    handleChange: function (event) {
-        this.setState({value: event.target.value});
+    passwordChangeHandler: function (event) {
+        this.setState({password: event.target.value});
+    },
+    passwordValidChangeHandler: function (event) {
+        this.setState({passwordValid: event.target.value});
+    },
+    emailChangeHandler: function (event) {
+        this.setState({email: event.target.value});
+    },
+    formSubmitHandler: function (event) {
+        event.preventDefault();
+        console.log(this.state);
+        if (this.state.password === this.state.passwordValid) {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/v1/users/'
+                , type: 'POST'
+                , data: this.state
+            }).then(function (data) {
+                sessionStorage.setItem('authToken', data.token);
+                //redirect to homepage
+            });
+        } else {
+            toastr.warning("Passwords don't match");
+        }
     },
     render: function () {
         return (
@@ -32143,28 +32238,28 @@ var Register = React.createClass({displayName: "Register",
                 React.createElement("form", null, 
                     React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
                     React.createElement(Input, {type: "text", 
-                           name: "username", label: "", 
-                           onChange: this.props.OnChange, 
-                           placeholder: "Username"}
+                           name: "username", 
+                           placeholder: "Username", 
+                           inputChangeHandler: this.userChangeHandler}
                     ), 
-                    React.createElement(Input, {type: "text", 
-                           name: "emal", label: "", 
-                           onChange: this.props.OnChange, 
-                           placeholder: "Email"}
+                    React.createElement(Input, {type: "email", 
+                           name: "email", 
+                           placeholder: "Email", 
+                           inputChangeHandler: this.emailChangeHandler}), 
+                    React.createElement(PassInput, {type: "password", 
+                               name: "password", 
+                               placeholder: "Password", 
+                               passwdChangeHandler: this.passwordChangeHandler}
                     ), 
-                    React.createElement(Input, {type: "password", 
-                           name: "password", label: "", 
-                           onChange: this.props.OnChange, 
-                           placeholder: "Password"}
-                    ), 
-                    React.createElement(Input, {type: "password", 
-                           name: "password", label: "", 
-                           onChange: this.props.OnChange, 
-                           placeholder: "Repeat Password"}
+                    React.createElement(PassInput, {type: "password", 
+                               name: "password2", 
+                               placeholder: "Repeat Password", 
+                               passwdChangeHandler: this.passwordValidChangeHandler}
                     ), 
                     React.createElement("input", {type: "Submit", 
                            className: "waves-effect waves-light btn", 
-                           value: "Register"})
+                           value: "Register", 
+                           onClick: this.formSubmitHandler})
                 )
             )
         );
@@ -32173,7 +32268,7 @@ var Register = React.createClass({displayName: "Register",
 });
 
 module.exports = Register;
-},{"./common/textInput":199,"react":196,"react-router":27}],203:[function(require,module,exports){
+},{"./common/passwordInput":199,"./common/textInput":200,"react":196,"react-router":27}],204:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32183,7 +32278,7 @@ var routes = require('./routes');
 Router.run(routes, function(Handler) {
 	React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
-},{"./routes":204,"react":196,"react-router":27}],204:[function(require,module,exports){
+},{"./routes":205,"react":196,"react-router":27}],205:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32204,4 +32299,4 @@ var routes = (
 );
 
 module.exports = routes;
-},{"./components/app":197,"./components/loginPage":200,"./components/notFoundPage":201,"./components/registerPage":202,"react":196,"react-router":27}]},{},[203]);
+},{"./components/app":197,"./components/loginPage":201,"./components/notFoundPage":202,"./components/registerPage":203,"react":196,"react-router":27}]},{},[204]);

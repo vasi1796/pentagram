@@ -19,13 +19,12 @@ var Input = React.createClass({
             <div className={wrapperClass}>
                 <label htmlFor={this.props.name}>{this.props.label}</label>
                 <div className="field">
-                    <input type="text"
-                           name="username"
-                           onChange={this.props.inputChangeHandler}
+                    <input type="password"
+                           name="password"
                            className="form-control"
                            placeholder={this.props.placeholder}
                            ref={this.props.name}
-                    />
+                           onChange={this.props.passwdChangeHandler}/>
                     <div className="input">{this.props.error}</div>
                 </div>
             </div>
@@ -34,3 +33,6 @@ var Input = React.createClass({
 });
 
 module.exports = Input;
+/**
+ * Created by vasy1 on 7/26/2016.
+ */
