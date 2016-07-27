@@ -57,8 +57,10 @@ var Register = React.createClass({
                     />
                     <Input type="email"
                            name="email"
+                           className="validate"
                            placeholder="Email"
-                           inputChangeHandler={this.emailChangeHandler}/>
+                           inputChangeHandler={this.emailChangeHandler}
+                    />
                     <PassInput type="password"
                                name="password"
                                placeholder="Password"
