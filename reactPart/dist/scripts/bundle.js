@@ -32514,6 +32514,25 @@ var RouteHandler = require('react-router').RouteHandler;
 $ = jQuery = require('jquery');
 
 var HomePage = React.createClass({displayName: "HomePage",
+    getInitialState: function () {
+        return {
+            images: [
+                ['./Images/pic.jpg', ['com1', 'com2', 'com3'], 10],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5],
+                ['./Images/pic.jpg', [], 8],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5]
+            ]
+        };
+
+    }
+    , onCommentHandler: function (event) {
+        console.log('Comment button was pressed!');
+    },
+    onLikeHandler: function (event) {
+        console.log('Like/Unlike button was pressed!');
+    },
     render: function () {
 
         document.body.style.background = "#f3f3f3 no-repeat right top";
@@ -32528,67 +32547,36 @@ var HomePage = React.createClass({displayName: "HomePage",
                     ), 
                     React.createElement("div", {className: "row text-center photoGrid"}, 
                         React.createElement("div", {className: "col s10 "}, 
-                            React.createElement("div", {className: "col s4"}, 
-                                React.createElement("div", {className: "card sticky-action"}, 
-                                    React.createElement("div", {className: "card-image materialboxed"}, 
-                                        React.createElement("img", {src: "Images/pic.jpg"})
-                                    ), 
-                                    React.createElement("div", {className: "card-content"}, 
+                            this.state.images.map(function (item, index) {
+                                return (
+                                    React.createElement("div", {className: "col s4"}, 
+                                        React.createElement("div", {className: "card sticky-action"}, 
+                                            React.createElement("div", {className: "card-image materialboxed"}, 
+                                                React.createElement("img", {src: item[0], id: 'image-' + index})
+                                            ), 
+                                            React.createElement("div", {className: "card-content"}, 
                                         React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right"}, "more_vert")), 
-                                        React.createElement("p", null, "Comments")
-                                    ), 
-                                    React.createElement("div", {className: "card-action"}, 
-                                        React.createElement("a", {href: "#"}, "Like/Unlike")
-                                    ), 
-                                    React.createElement("div", {className: "card-reveal"}, 
+                                            className: "material-icons right tealColor"}, "chat_bubble")), 
+                                                React.createElement("p", null, React.createElement("a", {href: "#"}, " Comment"))
+                                            ), 
+                                            React.createElement("div", {className: "card-action"}, 
+                                                React.createElement("p", null, React.createElement("a", {href: "#"}, React.createElement("i", {
+                                                    className: "small material-icons tealColor"}, "thumbs_up_down")), item[2]
+                                                )
+                                            ), 
+                                            React.createElement("div", {className: "card-reveal"}, 
                                         React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
                                             className: "material-icons right"}, "close")), 
-                                        React.createElement("p", null, "Here you will see the comments.")
+                                                React.createElement("p", null, React.createElement("br", null), item[1].map(function (comment, indexCom) {
+                                                    return (
+                                                        React.createElement("div", {id: 'comment-' + index + '-' + indexCom}, comment)
+                                                    );
+                                                }))
+                                            )
+                                        )
                                     )
-                                )
-                            ), 
-                            React.createElement("div", {className: "col s4"}, 
-                                React.createElement("div", {className: "card sticky-action"}, 
-                                    React.createElement("div", {className: "card-image materialboxed"}, 
-                                        React.createElement("img", {src: "Images/pic.jpg"})
-                                    ), 
-                                    React.createElement("div", {className: "card-content"}, 
-                                        React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right"}, "more_vert")), 
-                                        React.createElement("p", null, "Comments")
-                                    ), 
-                                    React.createElement("div", {className: "card-action"}, 
-                                        React.createElement("a", {href: "#"}, "Like/Unlike")
-                                    ), 
-                                    React.createElement("div", {className: "card-reveal"}, 
-                                        React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right"}, "close")), 
-                                        React.createElement("p", null, "Here you will see the comments.")
-                                    )
-                                )
-                            ), 
-                            React.createElement("div", {className: "col s4"}, 
-                                React.createElement("div", {className: "card sticky-action"}, 
-                                    React.createElement("div", {className: "card-image materialboxed"}, 
-                                        React.createElement("img", {src: "Images/pic.jpg"})
-                                    ), 
-                                    React.createElement("div", {className: "card-content"}, 
-                                        React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right"}, "more_vert")), 
-                                        React.createElement("p", null, "Comments")
-                                    ), 
-                                    React.createElement("div", {className: "card-action"}, 
-                                        React.createElement("a", {href: "#"}, "Like/Unlike")
-                                    ), 
-                                    React.createElement("div", {className: "card-reveal"}, 
-                                        React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right"}, "close")), 
-                                        React.createElement("p", null, "Here you will see the comments.")
-                                    )
-                                )
-                            )
-                        )
+                                );
+                            }), " ")
                     )
                 )
             )

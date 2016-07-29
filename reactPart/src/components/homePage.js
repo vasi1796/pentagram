@@ -11,6 +11,25 @@ var RouteHandler = require('react-router').RouteHandler;
 $ = jQuery = require('jquery');
 
 var HomePage = React.createClass({
+    getInitialState: function () {
+        return {
+            images: [
+                ['./Images/pic.jpg', ['com1', 'com2', 'com3'], 10],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5],
+                ['./Images/pic.jpg', [], 8],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5],
+                ['./Images/pic.jpg', ['com1', 'com2'], 5]
+            ]
+        };
+
+    }
+    , onCommentHandler: function (event) {
+        console.log('Comment button was pressed!');
+    },
+    onLikeHandler: function (event) {
+        console.log('Like/Unlike button was pressed!');
+    },
     render: function () {
 
         document.body.style.background = "#f3f3f3 no-repeat right top";
@@ -25,67 +44,36 @@ var HomePage = React.createClass({
                     </div>
                     <div className="row text-center photoGrid">
                         <div className="col s10 ">
-                            <div className="col s4">
-                                <div className="card sticky-action">
-                                    <div className="card-image materialboxed">
-                                        <img src="Images/pic.jpg"/>
-                                    </div>
-                                    <div className="card-content">
+                            {this.state.images.map(function (item, index) {
+                                return (
+                                    <div className="col s4">
+                                        <div className="card sticky-action">
+                                            <div className="card-image materialboxed">
+                                                <img src={item[0]} id={'image-' + index}/>
+                                            </div>
+                                            <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4"><i
-                                            className="material-icons right">more_vert</i></span>
-                                        <p>Comments</p>
-                                    </div>
-                                    <div className="card-action">
-                                        <a href="#">Like/Unlike</a>
-                                    </div>
-                                    <div className="card-reveal">
+                                            className="material-icons right tealColor">chat_bubble</i></span>
+                                                <p><a href="#"> Comment</a></p>
+                                            </div>
+                                            <div className="card-action">
+                                                <p><a href="#"><i
+                                                    className="small material-icons tealColor">thumbs_up_down</i></a>{item[2]}
+                                                </p>
+                                            </div>
+                                            <div className="card-reveal">
                                         <span className="card-title grey-text text-darken-4"><i
                                             className="material-icons right">close</i></span>
-                                        <p>Here you will see the comments.</p>
+                                                <p><br/>{item[1].map(function (comment, indexCom) {
+                                                    return (
+                                                        <div id={'comment-' + index + '-' + indexCom}>{comment}</div>
+                                                    );
+                                                })}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="col s4">
-                                <div className="card sticky-action">
-                                    <div className="card-image materialboxed">
-                                        <img src="Images/pic.jpg"/>
-                                    </div>
-                                    <div className="card-content">
-                                        <span className="card-title activator grey-text text-darken-4"><i
-                                            className="material-icons right">more_vert</i></span>
-                                        <p>Comments</p>
-                                    </div>
-                                    <div className="card-action">
-                                        <a href="#">Like/Unlike</a>
-                                    </div>
-                                    <div className="card-reveal">
-                                        <span className="card-title grey-text text-darken-4"><i
-                                            className="material-icons right">close</i></span>
-                                        <p>Here you will see the comments.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col s4">
-                                <div className="card sticky-action">
-                                    <div className="card-image materialboxed">
-                                        <img src="Images/pic.jpg"/>
-                                    </div>
-                                    <div className="card-content">
-                                        <span className="card-title activator grey-text text-darken-4"><i
-                                            className="material-icons right">more_vert</i></span>
-                                        <p>Comments</p>
-                                    </div>
-                                    <div className="card-action">
-                                        <a href="#">Like/Unlike</a>
-                                    </div>
-                                    <div className="card-reveal">
-                                        <span className="card-title grey-text text-darken-4"><i
-                                            className="material-icons right">close</i></span>
-                                        <p>Here you will see the comments.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                );
+                            })} </div>
                     </div>
                 </div>
             </div>
