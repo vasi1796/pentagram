@@ -11,17 +11,16 @@ body.body_blur:before {
     -o-filter: blur(10px);
 }
 
-body {
-    background-image: url('../Images/bg.jpg');
-    background-size: cover;
+.container-fluid {
+    padding: 0;
 }
 
-.container-fluid {
+.formWidth {
     width: 30%;
+    margin: auto;
 }
 
 .jumbotron {
-    background: rgb(199, 199, 199); /* This is for ie8 and below */
     background: rgba(255, 254, 250, 0.75);
 }
 
@@ -31,17 +30,48 @@ body {
 }
 
 .navbar-mini {
-    width: 50%;
     margin: auto;
     margin-bottom: 1%;
+    height: 3em;
 }
 
 #accountMessage {
     font-size: 90%;
 }
 
-.accountMessage{
-    padding:7%;
+.accountMessage {
+    padding: 1%;
+    width: 30%;
+    margin: auto;
+    margin-top: 1%;
 }
 
+.photoGrid {
+    width: 50%;
+    margin:auto;
+    margin-left:20%;
+}
+
+.homeNav {
+    background-color: white;
+    margin-bottom: 3%;
+    height: 3em;
+}
+
+.homeLogo {
+    width: 4%;
+    height: 100%;
+}
+
+.profileLogo {
+    width: 2.5%;
+    height: 80%;
+    padding: 1%;
+    margin-top: 0.3%;
+}
+
+.gallery {
+    width: 95%;
+    height: 95%;
+}
 

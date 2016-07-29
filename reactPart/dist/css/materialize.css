@@ -3535,7 +3535,7 @@ input[type=range] + .thumb {
 }
 
 .row .col.s10 {
-  width: 83.3333333333%;
+  width:auto;
   margin-left: auto;
   left: auto;
   right: auto;
