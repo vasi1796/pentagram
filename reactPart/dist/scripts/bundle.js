@@ -32512,10 +32512,13 @@ var Link = Router.Link;
 var HomeHeader = require('./common/homePageHeader');
 var RouteHandler = require('react-router').RouteHandler;
 $ = jQuery = require('jquery');
+var Input = require('./common/textInput');
+var toastr = require('toastr');
 
 var HomePage = React.createClass({displayName: "HomePage",
     getInitialState: function () {
         return {
+            comment: null,
             images: [
                 ['./Images/pic.gif', ['com1', 'com2', 'com3'], 10],
                 ['./Images/pic.gif', ['com1', 'com2'], 5],
@@ -32528,16 +32531,31 @@ var HomePage = React.createClass({displayName: "HomePage",
 
     }
     , onCommentHandler: function (event) {
-        console.log('Comment button was pressed!');
+        this.setState({comment: event.target.value});
     },
     onLikeHandler: function (event) {
         console.log('Like/Unlike button was pressed!');
     },
+    onCommentSubmitHandler: function (event) {
+        event.preventDefault();
+        console.log(this.state);
+        if (this.state.comment == null) {
+            toastr.error("Comment is empty");
+        } else {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/v1/1/comments/'
+                , type: 'POST'
+                , data: this.comment
+            });
+        }
+    },
     render: function () {
 
         document.body.style.background = "#f3f3f3 no-repeat right top";
-        var commentHandle = this.onCommentHandler;
         var likeHandle = this.onLikeHandler;
+        var commentHandle = this.onCommentHandler;
+        var commentSubmitHandle = this.onCommentSubmitHandler;
+
         return (
             React.createElement("div", null, 
                 React.createElement(HomeHeader, null), 
@@ -32548,7 +32566,7 @@ var HomePage = React.createClass({displayName: "HomePage",
                             className: "material-icons"}, "add"))
                     ), 
                     React.createElement("div", {className: "row text-center photoGrid"}, 
-                        React.createElement("div", {className: "col s10 "}, 
+                        React.createElement("div", {className: "col s10"}, 
                             this.state.images.map(function (item, index) {
                                 return (
                                     React.createElement("div", {className: "col s4"}, 
@@ -32559,7 +32577,15 @@ var HomePage = React.createClass({displayName: "HomePage",
                                             React.createElement("div", {className: "card-content"}, 
                                         React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
                                             className: "material-icons right tealColor"}, "chat_bubble")), 
-                                                React.createElement("p", null, React.createElement("a", {href: "#", onClick: commentHandle}, "Comment"))
+                                                React.createElement(Input, {placeholder: "Comment", 
+                                                       name: "comment", 
+                                                       inputChangeHandler: commentHandle}
+                                                ), 
+                                                React.createElement("input", {type: "Submit", 
+                                                       className: "btn waves-effect waves-light", 
+                                                       value: "Comment", 
+                                                       onClick: commentSubmitHandle}
+                                                )
                                             ), 
                                             React.createElement("div", {className: "card-action"}, 
                                                 React.createElement("p", null, React.createElement("a", {href: "#", onClick: likeHandle}, React.createElement("i", {
@@ -32589,7 +32615,7 @@ var HomePage = React.createClass({displayName: "HomePage",
 
 module.exports = HomePage;
 
-},{"./common/homePageHeader":200,"jquery":2,"react":196,"react-router":27}],204:[function(require,module,exports){
+},{"./common/homePageHeader":200,"./common/textInput":202,"jquery":2,"react":196,"react-router":27,"toastr":197}],204:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32808,9 +32834,9 @@ var routes = (
     React.createElement(Route, null, 
         React.createElement(Route, {name: "app", path: "/", handler: require('./components/app')}, 
             React.createElement(DefaultRoute, {handler: require('./components/loginPage')}), 
+            React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
             React.createElement(Route, {name: "login", handler: require('./components/loginPage')}), 
             React.createElement(Route, {name: "register", handler: require('./components/registerPage')}), 
-            React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
             React.createElement(Route, {name: "homePage", handler: require('./components/homePage')})
         )
     )

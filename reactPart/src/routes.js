@@ -12,9 +12,9 @@ var routes = (
     <Route>
         <Route name="app" path="/" handler={require('./components/app')}>
             <DefaultRoute handler={require('./components/loginPage')}/>
+            <NotFoundRoute handler={require('./components/notFoundPage')}/>
             <Route name="login" handler={require('./components/loginPage')}/>
             <Route name="register" handler={require('./components/registerPage')}/>
-            <NotFoundRoute handler={require('./components/notFoundPage')}/>
             <Route name="homePage" handler={require('./components/homePage')}/>
         </Route>
     </Route>
