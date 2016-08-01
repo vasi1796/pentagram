@@ -14,12 +14,12 @@ var HomePage = React.createClass({
     getInitialState: function () {
         return {
             images: [
-                ['./Images/pic.jpg', ['com1', 'com2', 'com3'], 10],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5],
-                ['./Images/pic.jpg', [], 8],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5]
+                ['./Images/pic.gif', ['com1', 'com2', 'com3'], 10],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', [], 8],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', ['com1', 'com2'], 5]
             ]
         };
 
@@ -33,6 +33,8 @@ var HomePage = React.createClass({
     render: function () {
 
         document.body.style.background = "#f3f3f3 no-repeat right top";
+        var commentHandle = this.onCommentHandler;
+        var likeHandle = this.onLikeHandler;
         return (
             <div>
                 <HomeHeader/>
@@ -54,10 +56,10 @@ var HomePage = React.createClass({
                                             <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4"><i
                                             className="material-icons right tealColor">chat_bubble</i></span>
-                                                <p><a href="#"> Comment</a></p>
+                                                <p><a href="#" onClick={commentHandle}>Comment</a></p>
                                             </div>
                                             <div className="card-action">
-                                                <p><a href="#"><i
+                                                <p><a href="#" onClick={likeHandle}><i
                                                     className="small material-icons tealColor">thumbs_up_down</i></a>{item[2]}
                                                 </p>
                                             </div>

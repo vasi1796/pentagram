@@ -1,0 +1,556 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'react-sidebar',
+1 verbose cli   '--save' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose install initial load of E:\ANDREI\Programming\Practica Pentalog\reactPart\package.json
+5 warn package.json psadmin@1.0.0 No description
+6 warn package.json psadmin@1.0.0 No README data
+7 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\bootstrap\package.json
+8 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\browserify\package.json
+9 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\flux\package.json
+10 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp\package.json
+11 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-concat\package.json
+12 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-connect\package.json
+13 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-eslint\package.json
+14 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-open\package.json
+15 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\jquery\package.json
+16 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\lodash\package.json
+17 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react\package.json
+18 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-router\package.json
+19 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\reactify\package.json
+20 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\toastr\package.json
+21 verbose installManyTop reading scoped package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\vinyl-source-stream\package.json
+22 info package.json flux@2.0.3 license should be a valid SPDX license expression
+23 info package.json jquery@2.1.4 No license field.
+24 info package.json toastr@2.1.0 No license field.
+25 info package.json gulp-eslint@0.15.0 No license field.
+26 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\package.json
+27 verbose readDependencies npm-shrinkwrap.json is overriding dependencies
+28 info shrinkwrap file "E:\\ANDREI\\Programming\\Practica Pentalog\\reactPart\\npm-shrinkwrap.json"
+29 verbose readDependencies returned deps { bootstrap: 'https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz',
+29 verbose readDependencies returned deps   browserify: 'https://registry.npmjs.org/browserify/-/browserify-11.0.1.tgz',
+29 verbose readDependencies returned deps   flux: 'https://registry.npmjs.org/flux/-/flux-2.0.3.tgz',
+29 verbose readDependencies returned deps   gulp: 'https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz',
+29 verbose readDependencies returned deps   'gulp-concat': 'https://registry.npmjs.org/gulp-concat/-/gulp-concat-2.6.0.tgz',
+29 verbose readDependencies returned deps   'gulp-connect': 'https://registry.npmjs.org/gulp-connect/-/gulp-connect-2.2.0.tgz',
+29 verbose readDependencies returned deps   'gulp-eslint': 'https://registry.npmjs.org/gulp-eslint/-/gulp-eslint-0.15.0.tgz',
+29 verbose readDependencies returned deps   'gulp-open': 'https://registry.npmjs.org/gulp-open/-/gulp-open-1.0.0.tgz',
+29 verbose readDependencies returned deps   jquery: 'https://registry.npmjs.org/jquery/-/jquery-2.1.4.tgz',
+29 verbose readDependencies returned deps   lodash: 'https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz',
+29 verbose readDependencies returned deps   react: 'https://registry.npmjs.org/react/-/react-0.13.3.tgz',
+29 verbose readDependencies returned deps   'react-router': 'https://registry.npmjs.org/react-router/-/react-router-0.13.3.tgz',
+29 verbose readDependencies returned deps   reactify: 'https://registry.npmjs.org/reactify/-/reactify-1.1.1.tgz',
+29 verbose readDependencies returned deps   toastr: 'https://registry.npmjs.org/toastr/-/toastr-2.1.0.tgz',
+29 verbose readDependencies returned deps   'vinyl-source-stream': 'https://registry.npmjs.org/vinyl-source-stream/-/vinyl-source-stream-1.1.0.tgz' }
+30 silly cache add args [ 'react-sidebar', null ]
+31 verbose cache add spec react-sidebar
+32 silly cache add parsed spec Result {
+32 silly cache add   raw: 'react-sidebar',
+32 silly cache add   scope: null,
+32 silly cache add   name: 'react-sidebar',
+32 silly cache add   rawSpec: '',
+32 silly cache add   spec: 'latest',
+32 silly cache add   type: 'tag' }
+33 silly addNamed react-sidebar@latest
+34 verbose addNamed "latest" is being treated as a dist-tag for react-sidebar
+35 info addNameTag [ 'react-sidebar', 'latest' ]
+36 silly mapToRegistry name react-sidebar
+37 silly mapToRegistry using default registry
+38 silly mapToRegistry registry https://registry.npmjs.org/
+39 silly mapToRegistry data Result {
+39 silly mapToRegistry   raw: 'react-sidebar',
+39 silly mapToRegistry   scope: null,
+39 silly mapToRegistry   name: 'react-sidebar',
+39 silly mapToRegistry   rawSpec: '',
+39 silly mapToRegistry   spec: 'latest',
+39 silly mapToRegistry   type: 'tag' }
+40 silly mapToRegistry uri https://registry.npmjs.org/react-sidebar
+41 verbose addNameTag registry:https://registry.npmjs.org/react-sidebar not in flight; fetching
+42 verbose request uri https://registry.npmjs.org/react-sidebar
+43 verbose request no auth needed
+44 info attempt registry request try #1 at 2:08:17 PM
+45 verbose request id 99b1f9a4576073e0
+46 http request GET https://registry.npmjs.org/react-sidebar
+47 http 200 https://registry.npmjs.org/react-sidebar
+48 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+48 verbose headers   etag: '"DFC0U7DS1V3LVWCBD1GZ1KVNJ"',
+48 verbose headers   'content-type': 'application/json',
+48 verbose headers   'content-encoding': 'gzip',
+48 verbose headers   'cache-control': 'max-age=300',
+48 verbose headers   'content-length': '6337',
+48 verbose headers   'accept-ranges': 'bytes',
+48 verbose headers   date: 'Sun, 31 Jul 2016 11:08:25 GMT',
+48 verbose headers   via: '1.1 varnish',
+48 verbose headers   age: '0',
+48 verbose headers   connection: 'keep-alive',
+48 verbose headers   'x-served-by': 'cache-fra1245-FRA',
+48 verbose headers   'x-cache': 'HIT',
+48 verbose headers   'x-cache-hits': '1',
+48 verbose headers   'x-timer': 'S1469963304.334928,VS0,VE752',
+48 verbose headers   vary: 'Accept-Encoding' }
+49 silly get cb [ 200,
+49 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+49 silly get     etag: '"DFC0U7DS1V3LVWCBD1GZ1KVNJ"',
+49 silly get     'content-type': 'application/json',
+49 silly get     'content-encoding': 'gzip',
+49 silly get     'cache-control': 'max-age=300',
+49 silly get     'content-length': '6337',
+49 silly get     'accept-ranges': 'bytes',
+49 silly get     date: 'Sun, 31 Jul 2016 11:08:25 GMT',
+49 silly get     via: '1.1 varnish',
+49 silly get     age: '0',
+49 silly get     connection: 'keep-alive',
+49 silly get     'x-served-by': 'cache-fra1245-FRA',
+49 silly get     'x-cache': 'HIT',
+49 silly get     'x-cache-hits': '1',
+49 silly get     'x-timer': 'S1469963304.334928,VS0,VE752',
+49 silly get     vary: 'Accept-Encoding' } ]
+50 verbose get saving react-sidebar to C:\Users\vasy1\AppData\Roaming\npm-cache\registry.npmjs.org\react-sidebar\.cache.json
+51 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+52 silly addNameTag next cb for react-sidebar with tag latest
+53 silly addNamed react-sidebar@2.2.1
+54 verbose addNamed "2.2.1" is a plain semver version for react-sidebar
+55 silly mapToRegistry name react-sidebar
+56 silly mapToRegistry using default registry
+57 silly mapToRegistry registry https://registry.npmjs.org/
+58 silly mapToRegistry data Result {
+58 silly mapToRegistry   raw: 'react-sidebar',
+58 silly mapToRegistry   scope: null,
+58 silly mapToRegistry   name: 'react-sidebar',
+58 silly mapToRegistry   rawSpec: '',
+58 silly mapToRegistry   spec: 'latest',
+58 silly mapToRegistry   type: 'tag' }
+59 silly mapToRegistry uri https://registry.npmjs.org/react-sidebar
+60 verbose addRemoteTarball https://registry.npmjs.org/react-sidebar/-/react-sidebar-2.2.1.tgz not in flight; adding
+61 verbose addRemoteTarball [ 'https://registry.npmjs.org/react-sidebar/-/react-sidebar-2.2.1.tgz',
+61 verbose addRemoteTarball   'a8faf6a3c62ddc562c70680d5d016fe9741b585f' ]
+62 info retry fetch attempt 1 at 2:08:18 PM
+63 info attempt registry request try #1 at 2:08:18 PM
+64 http fetch GET https://registry.npmjs.org/react-sidebar/-/react-sidebar-2.2.1.tgz
+65 http fetch 200 https://registry.npmjs.org/react-sidebar/-/react-sidebar-2.2.1.tgz
+66 silly fetchAndShaCheck shasum a8faf6a3c62ddc562c70680d5d016fe9741b585f
+67 verbose addTmpTarball C:\Users\vasy1\AppData\Local\Temp\npm-11520-e821af8c\registry.npmjs.org\react-sidebar\-\react-sidebar-2.2.1.tgz not in flight; adding
+68 verbose addTmpTarball already have metadata; skipping unpack for react-sidebar@2.2.1
+69 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+70 silly cache afterAdd react-sidebar@2.2.1
+71 verbose afterAdd C:\Users\vasy1\AppData\Roaming\npm-cache\react-sidebar\2.2.1\package\package.json not in flight; writing
+72 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+73 verbose afterAdd C:\Users\vasy1\AppData\Roaming\npm-cache\react-sidebar\2.2.1\package\package.json written
+74 silly install resolved [ { name: 'react-sidebar',
+74 silly install resolved     version: '2.2.1',
+74 silly install resolved     author: { name: 'Paulus Schoutsen', email: 'Paulus@PaulusSchoutsen.nl' },
+74 silly install resolved     description: 'A sidebar component for React.',
+74 silly install resolved     main: 'dist-modules/index.js',
+74 silly install resolved     'jsnest:main': 'src/index.js',
+74 silly install resolved     scripts:
+74 silly install resolved      { build: 'babel src --out-dir dist-modules && webpack --colors --progress -p',
+74 silly install resolved        dev: 'webpack --watch',
+74 silly install resolved        lint: 'eslint src example/src' },
+74 silly install resolved     keywords: [ 'component', 'react', 'react-component', 'sidebar' ],
+74 silly install resolved     repository:
+74 silly install resolved      { type: 'git',
+74 silly install resolved        url: 'git://github.com/balloob/react-sidebar.git' },
+74 silly install resolved     license: 'MIT',
+74 silly install resolved     peerDependencies: { react: '>=0.14.0', 'react-dom': '>=0.14.0' },
+74 silly install resolved     devDependencies:
+74 silly install resolved      { 'babel-cli': '^6.3.17',
+74 silly install resolved        'babel-core': '^6.3.26',
+74 silly install resolved        'babel-eslint': '^5.0.0',
+74 silly install resolved        'babel-loader': '^6.2.0',
+74 silly install resolved        'babel-plugin-transform-object-rest-spread': '^6.3.13',
+74 silly install resolved        'babel-preset-es2015': '^6.0.0',
+74 silly install resolved        'babel-preset-react': '^6.3.13',
+74 silly install resolved        eslint: '<2.3.0',
+74 silly install resolved        'eslint-config-airbnb': '^2.1.1',
+74 silly install resolved        'eslint-plugin-react': '^3.13.1',
+74 silly install resolved        react: '>=0.14.0',
+74 silly install resolved        'react-dom': '>=0.14.0',
+74 silly install resolved        webpack: '^1.12.9',
+74 silly install resolved        'webpack-dev-server': '^1.14.0' },
+74 silly install resolved     gitHead: 'f9c6dbc8ce139c31db87eb1fd74024e3eebb0eec',
+74 silly install resolved     bugs: { url: 'https://github.com/balloob/react-sidebar/issues' },
+74 silly install resolved     homepage: 'https://github.com/balloob/react-sidebar#readme',
+74 silly install resolved     _id: 'react-sidebar@2.2.1',
+74 silly install resolved     _shasum: 'a8faf6a3c62ddc562c70680d5d016fe9741b585f',
+74 silly install resolved     _from: 'react-sidebar@latest',
+74 silly install resolved     _npmVersion: '3.5.3',
+74 silly install resolved     _nodeVersion: '4.1.1',
+74 silly install resolved     _npmUser: { name: 'balloob', email: 'paulus@paulusschoutsen.nl' },
+74 silly install resolved     dist:
+74 silly install resolved      { shasum: 'a8faf6a3c62ddc562c70680d5d016fe9741b585f',
+74 silly install resolved        tarball: 'https://registry.npmjs.org/react-sidebar/-/react-sidebar-2.2.1.tgz' },
+74 silly install resolved     maintainers: [ [Object] ],
+74 silly install resolved     _npmOperationalInternal:
+74 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+74 silly install resolved        tmp: 'tmp/react-sidebar-2.2.1.tgz_1468983704819_0.611238039797172' },
+74 silly install resolved     directories: {},
+74 silly install resolved     _resolved: 'https://registry.npmjs.org/react-sidebar/-/react-sidebar-2.2.1.tgz' } ]
+75 info install react-sidebar@2.2.1 into E:\ANDREI\Programming\Practica Pentalog\reactPart
+76 info installOne react-sidebar@2.2.1
+77 verbose installOne of react-sidebar to E:\ANDREI\Programming\Practica Pentalog\reactPart not in flight; installing
+78 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+79 verbose lock using C:\Users\vasy1\AppData\Roaming\npm-cache\_locks\react-sidebar-86f1f59cdd4fa0cd.lock for E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+80 silly install write writing react-sidebar 2.2.1 to E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+81 verbose unbuild node_modules\react-sidebar
+82 silly gentlyRm E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar is being purged from base E:\ANDREI\Programming\Practica Pentalog\reactPart
+83 verbose gentlyRm don't care about contents; nuking E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+84 verbose tar unpack C:\Users\vasy1\AppData\Roaming\npm-cache\react-sidebar\2.2.1\package.tgz
+85 verbose tar unpacking to E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+86 silly gentlyRm E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar is being purged
+87 verbose gentlyRm don't care about contents; nuking E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+88 silly gunzTarPerm modes [ '777', '666' ]
+89 silly gunzTarPerm extractEntry package.json
+90 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+91 silly gunzTarPerm extractEntry .npmignore
+92 silly gunzTarPerm modified mode [ '.npmignore', 493, 511 ]
+93 silly gunzTarPerm extractEntry README.md
+94 silly gunzTarPerm modified mode [ 'README.md', 493, 511 ]
+95 silly gunzTarPerm extractEntry LICENSE
+96 silly gunzTarPerm modified mode [ 'LICENSE', 493, 511 ]
+97 silly gunzTarPerm extractEntry webpack.config.js
+98 silly gunzTarPerm modified mode [ 'webpack.config.js', 493, 511 ]
+99 silly gunzTarPerm extractEntry .nvmrc
+100 silly gunzTarPerm modified mode [ '.nvmrc', 420, 438 ]
+101 silly gunzTarPerm extractEntry .travis.yml
+102 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+103 silly gunzTarPerm extractEntry .babelrc
+104 silly gunzTarPerm modified mode [ '.babelrc', 420, 438 ]
+105 silly gunzTarPerm extractEntry dist-modules/index.js
+106 silly gunzTarPerm modified mode [ 'dist-modules/index.js', 420, 438 ]
+107 silly gunzTarPerm extractEntry dist-modules/sidebar.js
+108 silly gunzTarPerm modified mode [ 'dist-modules/sidebar.js', 493, 511 ]
+109 silly gunzTarPerm extractEntry example/index.html
+110 silly gunzTarPerm modified mode [ 'example/index.html', 493, 511 ]
+111 silly gunzTarPerm extractEntry example/responsive_example.html
+112 silly gunzTarPerm modified mode [ 'example/responsive_example.html', 493, 511 ]
+113 silly gunzTarPerm extractEntry example/src/index.js
+114 silly gunzTarPerm modified mode [ 'example/src/index.js', 493, 511 ]
+115 silly gunzTarPerm extractEntry example/src/material_title_panel.js
+116 silly gunzTarPerm modified mode [ 'example/src/material_title_panel.js', 420, 438 ]
+117 silly gunzTarPerm extractEntry example/src/responsive_example.js
+118 silly gunzTarPerm modified mode [ 'example/src/responsive_example.js', 493, 511 ]
+119 silly gunzTarPerm extractEntry example/src/sidebar_content.js
+120 silly gunzTarPerm modified mode [ 'example/src/sidebar_content.js', 420, 438 ]
+121 silly gunzTarPerm extractEntry .eslintrc
+122 silly gunzTarPerm modified mode [ '.eslintrc', 420, 438 ]
+123 silly gunzTarPerm extractEntry src/index.js
+124 silly gunzTarPerm modified mode [ 'src/index.js', 420, 438 ]
+125 silly gunzTarPerm extractEntry src/sidebar.js
+126 silly gunzTarPerm modified mode [ 'src/sidebar.js', 493, 511 ]
+127 verbose write writing to E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar\package.json
+128 info preinstall react-sidebar@2.2.1
+129 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar\package.json
+130 silly prepareForInstallMany adding react@>=0.14.0 from react-sidebar peerDependencies
+131 silly prepareForInstallMany adding react-dom@>=0.14.0 from react-sidebar peerDependencies
+132 warn peerDependencies The peer dependency react@>=0.14.0 included from react-sidebar will no
+133 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+134 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+135 warn peerDependencies The peer dependency react-dom@>=0.14.0 included from react-sidebar will no
+136 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+137 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+138 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar\package.json
+139 silly install resolved []
+140 verbose about to build E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+141 info build E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+142 info linkStuff react-sidebar@2.2.1
+143 silly linkStuff react-sidebar@2.2.1 has E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules as its parent node_modules
+144 verbose linkBins react-sidebar@2.2.1
+145 verbose linkMans react-sidebar@2.2.1
+146 verbose rebuildBundles react-sidebar@2.2.1
+147 info install react-sidebar@2.2.1
+148 info postinstall react-sidebar@2.2.1
+149 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\package.json
+150 verbose readDependencies npm-shrinkwrap.json is overriding dependencies
+151 info shrinkwrap file "E:\\ANDREI\\Programming\\Practica Pentalog\\reactPart\\npm-shrinkwrap.json"
+152 verbose readDependencies returned deps { bootstrap: 'https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz',
+152 verbose readDependencies returned deps   browserify: 'https://registry.npmjs.org/browserify/-/browserify-11.0.1.tgz',
+152 verbose readDependencies returned deps   flux: 'https://registry.npmjs.org/flux/-/flux-2.0.3.tgz',
+152 verbose readDependencies returned deps   gulp: 'https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz',
+152 verbose readDependencies returned deps   'gulp-concat': 'https://registry.npmjs.org/gulp-concat/-/gulp-concat-2.6.0.tgz',
+152 verbose readDependencies returned deps   'gulp-connect': 'https://registry.npmjs.org/gulp-connect/-/gulp-connect-2.2.0.tgz',
+152 verbose readDependencies returned deps   'gulp-eslint': 'https://registry.npmjs.org/gulp-eslint/-/gulp-eslint-0.15.0.tgz',
+152 verbose readDependencies returned deps   'gulp-open': 'https://registry.npmjs.org/gulp-open/-/gulp-open-1.0.0.tgz',
+152 verbose readDependencies returned deps   jquery: 'https://registry.npmjs.org/jquery/-/jquery-2.1.4.tgz',
+152 verbose readDependencies returned deps   lodash: 'https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz',
+152 verbose readDependencies returned deps   react: 'https://registry.npmjs.org/react/-/react-0.13.3.tgz',
+152 verbose readDependencies returned deps   'react-router': 'https://registry.npmjs.org/react-router/-/react-router-0.13.3.tgz',
+152 verbose readDependencies returned deps   reactify: 'https://registry.npmjs.org/reactify/-/reactify-1.1.1.tgz',
+152 verbose readDependencies returned deps   toastr: 'https://registry.npmjs.org/toastr/-/toastr-2.1.0.tgz',
+152 verbose readDependencies returned deps   'vinyl-source-stream': 'https://registry.npmjs.org/vinyl-source-stream/-/vinyl-source-stream-1.1.0.tgz' }
+153 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\bootstrap\package.json
+154 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\browserify\package.json
+155 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\flux\package.json
+156 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp\package.json
+157 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-concat\package.json
+158 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-connect\package.json
+159 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-eslint\package.json
+160 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-open\package.json
+161 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\jquery\package.json
+162 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\lodash\package.json
+163 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react\package.json
+164 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-router\package.json
+165 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar\package.json
+166 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\reactify\package.json
+167 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\toastr\package.json
+168 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\vinyl-source-stream\package.json
+169 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\browserify\package.json
+170 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\browserify.cmd\package.json
+171 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\gulp\package.json
+172 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\gulp.cmd\package.json
+173 verbose already installed skipping react@>=0.14.0 E:\ANDREI\Programming\Practica Pentalog\reactPart
+174 silly cache add args [ 'react-dom@>=0.14.0', null ]
+175 verbose cache add spec react-dom@>=0.14.0
+176 silly cache add parsed spec Result {
+176 silly cache add   raw: 'react-dom@>=0.14.0',
+176 silly cache add   scope: null,
+176 silly cache add   name: 'react-dom',
+176 silly cache add   rawSpec: '>=0.14.0',
+176 silly cache add   spec: '>=0.14.0',
+176 silly cache add   type: 'range' }
+177 silly addNamed react-dom@>=0.14.0
+178 verbose addNamed ">=0.14.0" is a valid semver range for react-dom
+179 silly addNameRange { name: 'react-dom', range: '>=0.14.0', hasData: false }
+180 silly mapToRegistry name react-dom
+181 silly mapToRegistry using default registry
+182 silly mapToRegistry registry https://registry.npmjs.org/
+183 silly mapToRegistry data Result {
+183 silly mapToRegistry   raw: 'react-dom',
+183 silly mapToRegistry   scope: null,
+183 silly mapToRegistry   name: 'react-dom',
+183 silly mapToRegistry   rawSpec: '',
+183 silly mapToRegistry   spec: 'latest',
+183 silly mapToRegistry   type: 'tag' }
+184 silly mapToRegistry uri https://registry.npmjs.org/react-dom
+185 verbose addNameRange registry:https://registry.npmjs.org/react-dom not in flight; fetching
+186 verbose request uri https://registry.npmjs.org/react-dom
+187 verbose request no auth needed
+188 info attempt registry request try #1 at 2:08:19 PM
+189 verbose etag "4SL7998L9V5QUX8BGWFGC46OO"
+190 http request GET https://registry.npmjs.org/react-dom
+191 http 304 https://registry.npmjs.org/react-dom
+192 verbose headers { date: 'Sun, 31 Jul 2016 11:08:25 GMT',
+192 verbose headers   via: '1.1 varnish',
+192 verbose headers   'cache-control': 'max-age=300',
+192 verbose headers   etag: '"4SL7998L9V5QUX8BGWFGC46OO"',
+192 verbose headers   age: '254',
+192 verbose headers   connection: 'keep-alive',
+192 verbose headers   'x-served-by': 'cache-fra1245-FRA',
+192 verbose headers   'x-cache': 'HIT',
+192 verbose headers   'x-cache-hits': '3',
+192 verbose headers   'x-timer': 'S1469963305.568535,VS0,VE0',
+192 verbose headers   vary: 'Accept-Encoding' }
+193 silly get cb [ 304,
+193 silly get   { date: 'Sun, 31 Jul 2016 11:08:25 GMT',
+193 silly get     via: '1.1 varnish',
+193 silly get     'cache-control': 'max-age=300',
+193 silly get     etag: '"4SL7998L9V5QUX8BGWFGC46OO"',
+193 silly get     age: '254',
+193 silly get     connection: 'keep-alive',
+193 silly get     'x-served-by': 'cache-fra1245-FRA',
+193 silly get     'x-cache': 'HIT',
+193 silly get     'x-cache-hits': '3',
+193 silly get     'x-timer': 'S1469963305.568535,VS0,VE0',
+193 silly get     vary: 'Accept-Encoding' } ]
+194 verbose etag https://registry.npmjs.org/react-dom from cache
+195 verbose get saving react-dom to C:\Users\vasy1\AppData\Roaming\npm-cache\registry.npmjs.org\react-dom\.cache.json
+196 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+197 silly addNameRange number 2 { name: 'react-dom', range: '>=0.14.0', hasData: true }
+198 silly addNameRange versions [ 'react-dom',
+198 silly addNameRange   [ '0.1.0',
+198 silly addNameRange     '0.14.0-beta1',
+198 silly addNameRange     '0.14.0-beta2',
+198 silly addNameRange     '0.14.0-beta3',
+198 silly addNameRange     '0.14.0-rc1',
+198 silly addNameRange     '0.14.0',
+198 silly addNameRange     '0.14.1',
+198 silly addNameRange     '0.14.2',
+198 silly addNameRange     '0.14.3',
+198 silly addNameRange     '0.14.4',
+198 silly addNameRange     '0.14.5',
+198 silly addNameRange     '0.14.6',
+198 silly addNameRange     '0.15.0-alpha.1',
+198 silly addNameRange     '0.14.7',
+198 silly addNameRange     '15.0.0-rc.1',
+198 silly addNameRange     '15.0.0-rc.2',
+198 silly addNameRange     '0.14.8',
+198 silly addNameRange     '15.0.0',
+198 silly addNameRange     '15.0.1',
+198 silly addNameRange     '15.0.2-alpha.1',
+198 silly addNameRange     '15.0.2-alpha.2',
+198 silly addNameRange     '15.0.2-alpha.3',
+198 silly addNameRange     '15.0.2-alpha.4',
+198 silly addNameRange     '15.0.2',
+198 silly addNameRange     '15.0.3-alpha.1',
+198 silly addNameRange     '15.0.3-alpha.2',
+198 silly addNameRange     '15.1.0-alpha.1',
+198 silly addNameRange     '15.1.0',
+198 silly addNameRange     '15.2.0-rc.1',
+198 silly addNameRange     '15.2.0-rc.2',
+198 silly addNameRange     '15.2.0',
+198 silly addNameRange     '15.2.1',
+198 silly addNameRange     '15.3.0-rc.1',
+198 silly addNameRange     '15.3.0-rc.2',
+198 silly addNameRange     '15.3.0-rc.3',
+198 silly addNameRange     '15.3.0' ] ]
+199 silly addNamed react-dom@15.3.0
+200 verbose addNamed "15.3.0" is a plain semver version for react-dom
+201 silly cache afterAdd react-dom@15.3.0
+202 verbose afterAdd C:\Users\vasy1\AppData\Roaming\npm-cache\react-dom\15.3.0\package\package.json not in flight; writing
+203 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+204 verbose afterAdd C:\Users\vasy1\AppData\Roaming\npm-cache\react-dom\15.3.0\package\package.json written
+205 silly install resolved [ { name: 'react-dom',
+205 silly install resolved     version: '15.3.0',
+205 silly install resolved     description: 'React package for working with the DOM.',
+205 silly install resolved     main: 'index.js',
+205 silly install resolved     repository:
+205 silly install resolved      { type: 'git',
+205 silly install resolved        url: 'git+https://github.com/facebook/react.git' },
+205 silly install resolved     keywords: [ 'react' ],
+205 silly install resolved     license: 'BSD-3-Clause',
+205 silly install resolved     bugs: { url: 'https://github.com/facebook/react/issues' },
+205 silly install resolved     homepage: 'https://facebook.github.io/react/',
+205 silly install resolved     dependencies: {},
+205 silly install resolved     peerDependencies: { react: '^15.3.0' },
+205 silly install resolved     scripts: { start: 'node server.js' },
+205 silly install resolved     _id: 'react-dom@15.3.0',
+205 silly install resolved     _shasum: '24a6a3df67969656b8a8225fd0d7fcb939d28bdd',
+205 silly install resolved     _resolved: 'https://registry.npmjs.org/react-dom/-/react-dom-15.3.0.tgz',
+205 silly install resolved     _from: 'react-dom@>=0.14.0',
+205 silly install resolved     _npmVersion: '3.9.6',
+205 silly install resolved     _nodeVersion: '6.2.0',
+205 silly install resolved     _npmUser: { name: 'zpao', email: 'paul@oshannessy.com' },
+205 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+205 silly install resolved     dist:
+205 silly install resolved      { shasum: '24a6a3df67969656b8a8225fd0d7fcb939d28bdd',
+205 silly install resolved        tarball: 'https://registry.npmjs.org/react-dom/-/react-dom-15.3.0.tgz' },
+205 silly install resolved     _npmOperationalInternal:
+205 silly install resolved      { host: 'packages-12-west.internal.npmjs.com',
+205 silly install resolved        tmp: 'tmp/react-dom-15.3.0.tgz_1469817492868_0.942254323977977' },
+205 silly install resolved     directories: {},
+205 silly install resolved     readme: 'ERROR: No README data found!' } ]
+206 info install react-dom@15.3.0 into E:\ANDREI\Programming\Practica Pentalog\reactPart
+207 info installOne react-dom@15.3.0
+208 verbose installOne of react-dom to E:\ANDREI\Programming\Practica Pentalog\reactPart not in flight; installing
+209 verbose correctMkdir C:\Users\vasy1\AppData\Roaming\npm-cache\_locks correctMkdir not in flight; initializing
+210 verbose lock using C:\Users\vasy1\AppData\Roaming\npm-cache\_locks\react-dom-b48c5e8b61bb2c10.lock for E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+211 silly install write writing react-dom 15.3.0 to E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+212 verbose unbuild node_modules\react-dom
+213 silly gentlyRm E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom is being purged from base E:\ANDREI\Programming\Practica Pentalog\reactPart
+214 verbose gentlyRm don't care about contents; nuking E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+215 verbose tar unpack C:\Users\vasy1\AppData\Roaming\npm-cache\react-dom\15.3.0\package.tgz
+216 verbose tar unpacking to E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+217 silly gentlyRm E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom is being purged
+218 verbose gentlyRm don't care about contents; nuking E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+219 silly gunzTarPerm modes [ '777', '666' ]
+220 silly gunzTarPerm extractEntry package.json
+221 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+222 silly gunzTarPerm extractEntry README.md
+223 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+224 silly gunzTarPerm extractEntry LICENSE
+225 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+226 silly gunzTarPerm extractEntry index.js
+227 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+228 silly gunzTarPerm extractEntry server.js
+229 silly gunzTarPerm modified mode [ 'server.js', 420, 438 ]
+230 silly gunzTarPerm extractEntry PATENTS
+231 silly gunzTarPerm modified mode [ 'PATENTS', 420, 438 ]
+232 silly gunzTarPerm extractEntry dist/react-dom-server.js
+233 silly gunzTarPerm modified mode [ 'dist/react-dom-server.js', 420, 438 ]
+234 silly gunzTarPerm extractEntry dist/react-dom-server.min.js
+235 silly gunzTarPerm modified mode [ 'dist/react-dom-server.min.js', 420, 438 ]
+236 silly gunzTarPerm extractEntry dist/react-dom.js
+237 silly gunzTarPerm modified mode [ 'dist/react-dom.js', 420, 438 ]
+238 silly gunzTarPerm extractEntry dist/react-dom.min.js
+239 silly gunzTarPerm modified mode [ 'dist/react-dom.min.js', 420, 438 ]
+240 silly gunzTarPerm extractEntry package.json.orig
+241 silly gunzTarPerm modified mode [ 'package.json.orig', 420, 438 ]
+242 silly gunzTarPerm extractEntry package.json.rej
+243 silly gunzTarPerm modified mode [ 'package.json.rej', 420, 438 ]
+244 verbose write writing to E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom\package.json
+245 info preinstall react-dom@15.3.0
+246 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom\package.json
+247 silly prepareForInstallMany adding react@^15.3.0 from react-dom peerDependencies
+248 warn peerDependencies The peer dependency react@^15.3.0 included from react-dom will no
+249 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+250 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+251 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom\package.json
+252 silly install resolved []
+253 verbose about to build E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+254 info build E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+255 info linkStuff react-dom@15.3.0
+256 silly linkStuff react-dom@15.3.0 has E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules as its parent node_modules
+257 verbose linkBins react-dom@15.3.0
+258 verbose linkMans react-dom@15.3.0
+259 verbose rebuildBundles react-dom@15.3.0
+260 info install react-dom@15.3.0
+261 info postinstall react-dom@15.3.0
+262 verbose readDependencies loading dependencies from E:\ANDREI\Programming\Practica Pentalog\reactPart\package.json
+263 verbose readDependencies npm-shrinkwrap.json is overriding dependencies
+264 info shrinkwrap file "E:\\ANDREI\\Programming\\Practica Pentalog\\reactPart\\npm-shrinkwrap.json"
+265 verbose readDependencies returned deps { bootstrap: 'https://registry.npmjs.org/bootstrap/-/bootstrap-3.3.5.tgz',
+265 verbose readDependencies returned deps   browserify: 'https://registry.npmjs.org/browserify/-/browserify-11.0.1.tgz',
+265 verbose readDependencies returned deps   flux: 'https://registry.npmjs.org/flux/-/flux-2.0.3.tgz',
+265 verbose readDependencies returned deps   gulp: 'https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz',
+265 verbose readDependencies returned deps   'gulp-concat': 'https://registry.npmjs.org/gulp-concat/-/gulp-concat-2.6.0.tgz',
+265 verbose readDependencies returned deps   'gulp-connect': 'https://registry.npmjs.org/gulp-connect/-/gulp-connect-2.2.0.tgz',
+265 verbose readDependencies returned deps   'gulp-eslint': 'https://registry.npmjs.org/gulp-eslint/-/gulp-eslint-0.15.0.tgz',
+265 verbose readDependencies returned deps   'gulp-open': 'https://registry.npmjs.org/gulp-open/-/gulp-open-1.0.0.tgz',
+265 verbose readDependencies returned deps   jquery: 'https://registry.npmjs.org/jquery/-/jquery-2.1.4.tgz',
+265 verbose readDependencies returned deps   lodash: 'https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz',
+265 verbose readDependencies returned deps   react: 'https://registry.npmjs.org/react/-/react-0.13.3.tgz',
+265 verbose readDependencies returned deps   'react-router': 'https://registry.npmjs.org/react-router/-/react-router-0.13.3.tgz',
+265 verbose readDependencies returned deps   reactify: 'https://registry.npmjs.org/reactify/-/reactify-1.1.1.tgz',
+265 verbose readDependencies returned deps   toastr: 'https://registry.npmjs.org/toastr/-/toastr-2.1.0.tgz',
+265 verbose readDependencies returned deps   'vinyl-source-stream': 'https://registry.npmjs.org/vinyl-source-stream/-/vinyl-source-stream-1.1.0.tgz' }
+266 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\bootstrap\package.json
+267 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\browserify\package.json
+268 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\flux\package.json
+269 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp\package.json
+270 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-concat\package.json
+271 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-connect\package.json
+272 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-eslint\package.json
+273 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\gulp-open\package.json
+274 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\jquery\package.json
+275 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\lodash\package.json
+276 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react\package.json
+277 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom\package.json
+278 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-router\package.json
+279 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar\package.json
+280 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\reactify\package.json
+281 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\toastr\package.json
+282 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\vinyl-source-stream\package.json
+283 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\browserify\package.json
+284 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\browserify.cmd\package.json
+285 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\gulp\package.json
+286 verbose targetResolver reading package data from E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\.bin\gulp.cmd\package.json
+287 verbose already installed skipping react@^15.3.0 E:\ANDREI\Programming\Practica Pentalog\reactPart
+288 silly install resolved []
+289 verbose unlock done using C:\Users\vasy1\AppData\Roaming\npm-cache\_locks\react-dom-b48c5e8b61bb2c10.lock for E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-dom
+290 verbose unlock done using C:\Users\vasy1\AppData\Roaming\npm-cache\_locks\react-sidebar-86f1f59cdd4fa0cd.lock for E:\ANDREI\Programming\Practica Pentalog\reactPart\node_modules\react-sidebar
+291 verbose validateInstall loading E:\ANDREI\Programming\Practica Pentalog\reactPart\package.json for validation
+292 verbose stack Error: The package react@0.13.3 does not satisfy its siblings' peerDependencies requirements!
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+292 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+292 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+292 verbose stack     at cb (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+292 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+293 verbose cwd E:\ANDREI\Programming\Practica Pentalog\reactPart
+294 error Windows_NT 10.0.10586
+295 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "react-sidebar" "--save"
+296 error node v4.4.7
+297 error npm  v2.15.8
+298 error code EPEERINVALID
+299 error peerinvalid The package react@0.13.3 does not satisfy its siblings' peerDependencies requirements!
+299 error peerinvalid Peer react-router@0.13.3 wants react@0.13.x
+299 error peerinvalid Peer react-dom@15.3.0 wants react@^15.3.0
+299 error peerinvalid Peer react-sidebar@2.2.1 wants react@>=0.14.0
+300 verbose exit [ 1, true ]

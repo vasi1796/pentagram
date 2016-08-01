@@ -6,6 +6,7 @@ var Link = Router.Link;
 var Input = require('./common/textInput');
 var PassInput = require('./common/passwordInput');
 var Header = require('./common/header');
+var toastr = require('toastr');
 
 var Login = React.createClass({
     getInitialState: function () {
@@ -34,6 +35,7 @@ var Login = React.createClass({
                 , data: this.state
             }).then(function (data) {
                 sessionStorage.setItem('authToken', data.token);
+                sessionStorage.setItem('userData', data);
                 Router.HashLocation.push('homePage');
                 //redirect to homepage
             });

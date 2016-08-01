@@ -32406,15 +32406,15 @@ var Link = Router.Link;
 var HomeHeader = React.createClass({displayName: "HomeHeader",
     render: function () {
         return (
-            React.createElement("nav", {className: "homeNav"}, 
-                React.createElement("div", {className: "nav-wrapper"}, 
-                    React.createElement("div", {className: "container"}, 
-                        React.createElement("img", {src: 'Images/logo1.png', className: "brand-logo center homeLogo"}), 
-                        React.createElement("a", {href: "#"}, React.createElement("img", {src: 'Images/profileLogo.png', 
-                                         className: "brand-logo right profileLogo"}))
+                React.createElement("nav", {className: "homeNav"}, 
+                    React.createElement("div", {className: "nav-wrapper"}, 
+                        React.createElement("div", {className: "container"}, 
+                            React.createElement("img", {src: 'Images/logo1.png', className: "brand-logo center homeLogo"}), 
+                            React.createElement("a", {href: "#"}, React.createElement("img", {src: 'Images/profileLogo.png', 
+                                             className: "brand-logo right profileLogo"}))
+                        )
                     )
                 )
-            )
         );
     }
 });
@@ -32517,12 +32517,12 @@ var HomePage = React.createClass({displayName: "HomePage",
     getInitialState: function () {
         return {
             images: [
-                ['./Images/pic.jpg', ['com1', 'com2', 'com3'], 10],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5],
-                ['./Images/pic.jpg', [], 8],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5],
-                ['./Images/pic.jpg', ['com1', 'com2'], 5]
+                ['./Images/pic.gif', ['com1', 'com2', 'com3'], 10],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', [], 8],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', ['com1', 'com2'], 5]
             ]
         };
 
@@ -32536,6 +32536,8 @@ var HomePage = React.createClass({displayName: "HomePage",
     render: function () {
 
         document.body.style.background = "#f3f3f3 no-repeat right top";
+        var commentHandle = this.onCommentHandler;
+        var likeHandle = this.onLikeHandler;
         return (
             React.createElement("div", null, 
                 React.createElement(HomeHeader, null), 
@@ -32557,10 +32559,10 @@ var HomePage = React.createClass({displayName: "HomePage",
                                             React.createElement("div", {className: "card-content"}, 
                                         React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
                                             className: "material-icons right tealColor"}, "chat_bubble")), 
-                                                React.createElement("p", null, React.createElement("a", {href: "#"}, " Comment"))
+                                                React.createElement("p", null, React.createElement("a", {href: "#", onClick: commentHandle}, "Comment"))
                                             ), 
                                             React.createElement("div", {className: "card-action"}, 
-                                                React.createElement("p", null, React.createElement("a", {href: "#"}, React.createElement("i", {
+                                                React.createElement("p", null, React.createElement("a", {href: "#", onClick: likeHandle}, React.createElement("i", {
                                                     className: "small material-icons tealColor"}, "thumbs_up_down")), item[2]
                                                 )
                                             ), 
@@ -32596,6 +32598,7 @@ var Link = Router.Link;
 var Input = require('./common/textInput');
 var PassInput = require('./common/passwordInput');
 var Header = require('./common/header');
+var toastr = require('toastr');
 
 var Login = React.createClass({displayName: "Login",
     getInitialState: function () {
@@ -32624,6 +32627,7 @@ var Login = React.createClass({displayName: "Login",
                 , data: this.state
             }).then(function (data) {
                 sessionStorage.setItem('authToken', data.token);
+                sessionStorage.setItem('userData', data);
                 Router.HashLocation.push('homePage');
                 //redirect to homepage
             });
@@ -32662,7 +32666,7 @@ var Login = React.createClass({displayName: "Login",
 });
 
 module.exports = Login;
-},{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27}],205:[function(require,module,exports){
+},{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27,"toastr":197}],205:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
