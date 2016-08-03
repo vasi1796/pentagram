@@ -32661,7 +32661,7 @@ var Login = React.createClass({displayName: "Login",
             }).then(function (data) {
                 sessionStorage.setItem('authToken', data.token);
                 sessionStorage.setItem('id', data.id);
-                Router.HashLocation.push('homePage');
+                Router.HashLocation.push('feed');
                 //redirect to homepage
             });
         }
@@ -32740,11 +32740,13 @@ var New = React.createClass({displayName: "New",
         });
 
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/v1/photos/' + '1' + '/like/'
-            , type: 'GET'
-            , error: function (xhr, textStatus, errorThrown) {
+            url: 'http://127.0.0.1:8000/api/v1/photos/1/like/'
+            , type: 'GET',
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("the error is " + textStatus + " " + errorThrown);
             }
         }).then(function (likesData) {
+            console.log(likesData);
             self.setState({likes: likesData});
         });
     },
@@ -32754,7 +32756,6 @@ var New = React.createClass({displayName: "New",
     onLikeHandler: function (event) {
         console.log('Like/Unlike button was pressed!');
         var token = sessionStorage.getItem("authToken");
-        var user = sessionStorage.getItem("id");
         var photoId = event.target.dataset.id;
         $.ajax({
             beforeSend: function (xhr) {
@@ -33023,8 +33024,8 @@ var routes = (
             React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
             React.createElement(Route, {name: "login", handler: require('./components/loginPage')}), 
             React.createElement(Route, {name: "register", handler: require('./components/registerPage')}), 
-            React.createElement(Route, {name: "homePage", handler: require('./components/new')}), 
-            React.createElement(Route, {name: "new", handler: require('./components/homePage')})
+            React.createElement(Route, {name: "feed", handler: require('./components/new')}), 
+            React.createElement(Route, {name: "oldFeed", handler: require('./components/homePage')})
         )
     )
 );

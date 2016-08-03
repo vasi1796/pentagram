@@ -36,7 +36,7 @@ var Login = React.createClass({
             }).then(function (data) {
                 sessionStorage.setItem('authToken', data.token);
                 sessionStorage.setItem('id', data.id);
-                Router.HashLocation.push('homePage');
+                Router.HashLocation.push('feed');
                 //redirect to homepage
             });
         }
