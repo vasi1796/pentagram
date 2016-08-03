@@ -15,7 +15,8 @@ var routes = (
             <NotFoundRoute handler={require('./components/notFoundPage')}/>
             <Route name="login" handler={require('./components/loginPage')}/>
             <Route name="register" handler={require('./components/registerPage')}/>
-            <Route name="homePage" handler={require('./components/homePage')}/>
+            <Route name="homePage" handler={require('./components/new')}/>
+            <Route name="new" handler={require('./components/homePage')}/>
         </Route>
     </Route>
 );

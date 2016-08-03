@@ -32555,7 +32555,11 @@ var HomePage = React.createClass({displayName: "HomePage",
         var likeHandle = this.onLikeHandler;
         var commentHandle = this.onCommentHandler;
         var commentSubmitHandle = this.onCommentSubmitHandler;
-
+        var self = this;
+        var tokenNumber = sessionStorage.getItem("authToken");
+        if (!tokenNumber) {
+            Router.HashLocation.push("login");
+        }
         return (
             React.createElement("div", null, 
                 React.createElement(HomeHeader, null), 
@@ -32576,16 +32580,7 @@ var HomePage = React.createClass({displayName: "HomePage",
                                             ), 
                                             React.createElement("div", {className: "card-content"}, 
                                         React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right tealColor"}, "chat_bubble")), 
-                                                React.createElement(Input, {placeholder: "Comment", 
-                                                       name: "comment", 
-                                                       inputChangeHandler: commentHandle}
-                                                ), 
-                                                React.createElement("input", {type: "Submit", 
-                                                       className: "btn waves-effect waves-light", 
-                                                       value: "Comment", 
-                                                       onClick: commentSubmitHandle}
-                                                )
+                                            className: "material-icons right tealColor"}, "chat_bubble"))
                                             ), 
                                             React.createElement("div", {className: "card-action"}, 
                                                 React.createElement("p", null, React.createElement("a", {href: "#", onClick: likeHandle}, React.createElement("i", {
@@ -32597,9 +32592,21 @@ var HomePage = React.createClass({displayName: "HomePage",
                                             className: "material-icons right"}, "close")), 
                                                 React.createElement("p", null, React.createElement("br", null), item[1].map(function (comment, indexCom) {
                                                     return (
-                                                        React.createElement("div", {id: 'comment-' + index + '-' + indexCom}, comment)
+                                                        React.createElement("div", {id: 'comment-' + index + '-' + indexCom, 
+                                                             className: "left-align"}, 
+                                                            React.createElement("p", null, 
+                                                                React.createElement("div", {className: "chip"}, "UserId"), 
+                                                                comment)
+                                                        )
                                                     );
-                                                }))
+                                                })), 
+                                                React.createElement("p", null, React.createElement(Input, {placeholder: "Comment", 
+                                                          name: "comment", 
+                                                          inputChangeHandler: commentHandle}), 
+                                                    React.createElement("input", {type: "Submit", 
+                                                           className: "btn waves-effect waves-light", 
+                                                           value: "Comment", 
+                                                           onClick: commentSubmitHandle}))
                                             )
                                         )
                                     )
@@ -32653,7 +32660,7 @@ var Login = React.createClass({displayName: "Login",
                 , data: this.state
             }).then(function (data) {
                 sessionStorage.setItem('authToken', data.token);
-                sessionStorage.setItem('userData', data);
+                sessionStorage.setItem('id', data.id);
                 Router.HashLocation.push('homePage');
                 //redirect to homepage
             });
@@ -32693,6 +32700,186 @@ var Login = React.createClass({displayName: "Login",
 
 module.exports = Login;
 },{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27,"toastr":197}],205:[function(require,module,exports){
+/**
+ * Created by vasy1 on 7/28/2016.
+ */
+"use strict";
+
+var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
+var HomeHeader = require('./common/homePageHeader');
+var RouteHandler = require('react-router').RouteHandler;
+$ = jQuery = require('jquery');
+var Input = require('./common/textInput');
+var toastr = require('toastr');
+
+var New = React.createClass({displayName: "New",
+    getInitialState: function () {
+        return {
+            images: [{
+                "id": 1,
+                "user": 1,
+                "photo": "/media/photos/user_admin/70cc28b8-4a5d-11e6-9a7a-d4bed902b258_gibriil.jpg"
+            }],
+            likes: '',
+            comments: [],
+            fetchComments: false
+        };
+    }
+    , componentWillMount: function () {
+        var self = this;
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/v1/photos/'
+            , type: 'GET'
+            , error: function (xhr, textStatus, errorThrown) {
+
+            }
+        }).then(function (data) {
+            self.setState({images: data});
+        });
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/v1/photos/' + '1' + '/like/'
+            , type: 'GET'
+            , error: function (xhr, textStatus, errorThrown) {
+            }
+        }).then(function (likesData) {
+            self.setState({likes: likesData});
+        });
+    },
+    onCommentHandler: function (event) {
+        this.setState({comment: event.target.value});
+    },
+    onLikeHandler: function (event) {
+        console.log('Like/Unlike button was pressed!');
+        var token = sessionStorage.getItem("authToken");
+        var user = sessionStorage.getItem("id");
+        var photoId = event.target.dataset.id;
+        $.ajax({
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Token ' + token);
+            },
+            url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/like/'
+            , type: 'POST'
+        });
+
+    },
+    onCommentSubmitHandler: function (event) {
+        event.preventDefault();
+        console.log(this.state);
+        var photoId = event.target.dataset.id;
+        if (this.state.comment == null) {
+            toastr.error("Comment is empty");
+        } else {
+            var token = sessionStorage.getItem("authToken");
+            //this.setState({user: sessionStorage.getItem("id")});
+            $.ajax({
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Token ' + token);
+                },
+                url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
+                , type: 'POST'
+            });
+        }
+    },
+    showComments: function (event) {
+        var photoId = event.target.dataset.id;
+        var self = this;
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
+            , type: 'GET'
+            , error: function (xhr, textStatus, errorThrown) {
+            }
+        }).then(function (commentData) {
+            self.setState({comments: commentData});
+        });
+        this.setState({
+            fetchComments: true
+        });
+    },
+    render: function () {
+
+        document.body.style.background = "#f3f3f3 no-repeat right top";
+        var likeHandle = this.onLikeHandler;
+        var commentHandle = this.onCommentHandler;
+        var commentSubmitHandle = this.onCommentSubmitHandler;
+        var self = this;
+        var tokenNumber = sessionStorage.getItem("authToken");
+        if (!tokenNumber) {
+            Router.HashLocation.push("login");
+        }
+        return (
+            React.createElement("div", null, 
+                React.createElement(HomeHeader, null), 
+                React.createElement("div", null, 
+                    React.createElement("div", {className: "fixed-action-btn"}, 
+                        React.createElement("a", {
+                            className: "btn-floating btn-large waves-effect waves-light blue"}, React.createElement("i", {
+                            className: "material-icons"}, "add"))
+                    ), 
+                    React.createElement("div", {className: "row text-center photoGrid"}, 
+                        React.createElement("div", {className: "col s10"}, 
+                            self.state.images.map(function (item) {
+                                return (
+                                    React.createElement("div", {className: "col s4"}, 
+                                        React.createElement("div", {className: "card sticky-action"}, 
+                                            React.createElement("div", {className: "card-image materialboxed key={item.id}"}, 
+                                                React.createElement("img", {src: 'http://127.0.0.1:8000' + item.photo, id: 'image-' + item.id, 
+                                                     "data-id": item.id, width: "100%", height: "100%"})
+                                            ), 
+                                            React.createElement("div", {className: "card-content"}, 
+                                                React.createElement("span", {className: "card-title activator grey-text text-darken-4", 
+                                                      onClick: self.showComments}, React.createElement("i", {
+                                                    className: "material-icons right tealColor", "data-id": item.id}, "chat_bubble"))
+                                            ), 
+                                            React.createElement("div", {className: "card-action"}, 
+                                                React.createElement("p", null, React.createElement("a", {role: "button", onClick: likeHandle}, React.createElement("i", {
+                                                    className: "small material-icons tealColor", "data-id": item.id}, "thumbs_up_down")), self.state.likes
+                                                )
+                                            ), 
+                                            React.createElement("div", {className: "card-reveal"}, 
+                                                React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
+                                                    className: "material-icons right"}, "close")), 
+                                                React.createElement("p", null, React.createElement("br", null), 
+                                                    self.state.comments.map(function (commItem) {
+                                                        return (
+                                                            React.createElement("div", {className: "left-align"}, 
+                                                                React.createElement("p", null, 
+                                                                    React.createElement("div", {className: "chip"}, commItem.user), 
+                                                                    commItem.comment
+                                                                )
+                                                            )
+                                                        );
+                                                    })
+                                                ), 
+                                                React.createElement("p", null, React.createElement(Input, {placeholder: "Comment", 
+                                                          name: "comment", 
+                                                          inputChangeHandler: commentHandle}), 
+                                                    React.createElement("input", {type: "Submit", 
+                                                           className: "btn waves-effect waves-light", 
+                                                           "data-id": item.id, 
+                                                           value: "Comment", 
+                                                           onClick: commentSubmitHandle}))
+                                            )
+                                        )
+                                    )
+                                );
+                            })
+                        )
+                    )
+                )
+            )
+        );
+
+    }
+});
+
+module.exports = New;
+/**
+ * Created by vasy1 on 8/2/2016.
+ */
+},{"./common/homePageHeader":200,"./common/textInput":202,"jquery":2,"react":196,"react-router":27,"toastr":197}],206:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32712,7 +32899,7 @@ var NotFoundPage = React.createClass({displayName: "NotFoundPage",
 
 module.exports = NotFoundPage;
 
-},{"react":196,"react-router":27}],206:[function(require,module,exports){
+},{"react":196,"react-router":27}],207:[function(require,module,exports){
 /**
  * Created by vasy1 on 7/25/2016.
  */
@@ -32761,8 +32948,7 @@ var Register = React.createClass({displayName: "Register",
                 , type: 'POST'
                 , data: this.state
             }).then(function (data) {
-                sessionStorage.setItem('authToken', data.token);
-                Router.HashLocation.push('homePage');
+                Router.HashLocation.push('login');
                 //redirect to homepage
             });
         } else {
@@ -32809,7 +32995,7 @@ var Register = React.createClass({displayName: "Register",
 });
 
 module.exports = Register;
-},{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27,"toastr":197}],207:[function(require,module,exports){
+},{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27,"toastr":197}],208:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32819,7 +33005,7 @@ var routes = require('./routes');
 Router.run(routes, function(Handler) {
 	React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
-},{"./routes":208,"react":196,"react-router":27}],208:[function(require,module,exports){
+},{"./routes":209,"react":196,"react-router":27}],209:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32837,10 +33023,11 @@ var routes = (
             React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
             React.createElement(Route, {name: "login", handler: require('./components/loginPage')}), 
             React.createElement(Route, {name: "register", handler: require('./components/registerPage')}), 
-            React.createElement(Route, {name: "homePage", handler: require('./components/homePage')})
+            React.createElement(Route, {name: "homePage", handler: require('./components/new')}), 
+            React.createElement(Route, {name: "new", handler: require('./components/homePage')})
         )
     )
 );
 
 module.exports = routes;
-},{"./components/app":198,"./components/homePage":203,"./components/loginPage":204,"./components/notFoundPage":205,"./components/registerPage":206,"react":196,"react-router":27}]},{},[207]);
+},{"./components/app":198,"./components/homePage":203,"./components/loginPage":204,"./components/new":205,"./components/notFoundPage":206,"./components/registerPage":207,"react":196,"react-router":27}]},{},[208]);

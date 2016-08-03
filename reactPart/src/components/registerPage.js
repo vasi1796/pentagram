@@ -46,8 +46,7 @@ var Register = React.createClass({
                 , type: 'POST'
                 , data: this.state
             }).then(function (data) {
-                sessionStorage.setItem('authToken', data.token);
-                Router.HashLocation.push('homePage');
+                Router.HashLocation.push('login');
                 //redirect to homepage
             });
         } else {

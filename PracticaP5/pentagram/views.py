@@ -4,10 +4,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from pentagram.models import Photo, Comment, Like
 from pentagram.serializers import PhotoSerializer, UserSerializer, CommentSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
 
 
 # Create your views here.
 @api_view(["GET", "POST"])
+@permission_classes((AllowAny,))
 def photos(request):
     if request.method == 'GET':
         photos = Photo.objects.all()
@@ -33,6 +36,7 @@ def users(request):
 
 
 @api_view(['GET', 'POST'])
+@permission_classes((AllowAny,))
 def comments(request, id_photo):
     if request.method == 'GET':
         comments = Comment.objects.filter(photo=id_photo)
@@ -48,6 +52,7 @@ def comments(request, id_photo):
 
 
 @api_view(['GET', 'POST'])
+@permission_classes((AllowAny,))
 def like(request, id_photo):
     if request.method == 'GET':
         # for like from user at particular photo
@@ -63,3 +68,10 @@ def like(request, id_photo):
         else:
             Like.objects.filter(photo=id_photo, user=request.user.id).delete()
             return Response(status=status.HTTP_205_RESET_CONTENT)
+
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id})

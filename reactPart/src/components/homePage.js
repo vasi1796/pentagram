@@ -52,7 +52,11 @@ var HomePage = React.createClass({
         var likeHandle = this.onLikeHandler;
         var commentHandle = this.onCommentHandler;
         var commentSubmitHandle = this.onCommentSubmitHandler;
-
+        var self = this;
+        var tokenNumber = sessionStorage.getItem("authToken");
+        if (!tokenNumber) {
+            Router.HashLocation.push("login");
+        }
         return (
             <div>
                 <HomeHeader/>
@@ -74,15 +78,6 @@ var HomePage = React.createClass({
                                             <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4"><i
                                             className="material-icons right tealColor">chat_bubble</i></span>
-                                                <Input placeholder="Comment"
-                                                       name="comment"
-                                                       inputChangeHandler={commentHandle}
-                                                />
-                                                <input type="Submit"
-                                                       className="btn waves-effect waves-light"
-                                                       value="Comment"
-                                                       onClick={commentSubmitHandle}
-                                                />
                                             </div>
                                             <div className="card-action">
                                                 <p><a href="#" onClick={likeHandle}><i
@@ -94,9 +89,21 @@ var HomePage = React.createClass({
                                             className="material-icons right">close</i></span>
                                                 <p><br/>{item[1].map(function (comment, indexCom) {
                                                     return (
-                                                        <div id={'comment-' + index + '-' + indexCom}>{comment}</div>
+                                                        <div id={'comment-' + index + '-' + indexCom}
+                                                             className="left-align">
+                                                            <p>
+                                                                <div className="chip">UserId</div>
+                                                                {comment}</p>
+                                                        </div>
                                                     );
                                                 })}</p>
+                                                <p><Input placeholder="Comment"
+                                                          name="comment"
+                                                          inputChangeHandler={commentHandle}/>
+                                                    <input type="Submit"
+                                                           className="btn waves-effect waves-light"
+                                                           value="Comment"
+                                                           onClick={commentSubmitHandle}/></p>
                                             </div>
                                         </div>
                                     </div>
