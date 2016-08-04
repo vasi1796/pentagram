@@ -7,15 +7,13 @@ var Link = Router.Link;
 var HomeHeader = React.createClass({
     render: function () {
         return (
-                <nav className="homeNav">
-                    <div className="nav-wrapper">
-                        <div className="container">
-                            <img src={'Images/logo1.png'} className="brand-logo center homeLogo"/>
-                            <a href="#"><img src={'Images/profileLogo.png'}
-                                             className="brand-logo right profileLogo"/></a>
-                        </div>
+            <nav className="homeNav">
+                <div className="nav-wrapper">
+                    <div className="container">
+                        <img src={'Images/logo1.png'} className="brand-logo center homeLogo"/>
                     </div>
-                </nav>
+                </div>
+            </nav>
         );
     }
 });

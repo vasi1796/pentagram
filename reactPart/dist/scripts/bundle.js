@@ -32406,15 +32406,13 @@ var Link = Router.Link;
 var HomeHeader = React.createClass({displayName: "HomeHeader",
     render: function () {
         return (
-                React.createElement("nav", {className: "homeNav"}, 
-                    React.createElement("div", {className: "nav-wrapper"}, 
-                        React.createElement("div", {className: "container"}, 
-                            React.createElement("img", {src: 'Images/logo1.png', className: "brand-logo center homeLogo"}), 
-                            React.createElement("a", {href: "#"}, React.createElement("img", {src: 'Images/profileLogo.png', 
-                                             className: "brand-logo right profileLogo"}))
-                        )
+            React.createElement("nav", {className: "homeNav"}, 
+                React.createElement("div", {className: "nav-wrapper"}, 
+                    React.createElement("div", {className: "container"}, 
+                        React.createElement("img", {src: 'Images/logo1.png', className: "brand-logo center homeLogo"})
                     )
                 )
+            )
         );
     }
 });
@@ -32501,205 +32499,6 @@ var Input = React.createClass({displayName: "Input",
 module.exports = Input;
 
 },{"react":196}],203:[function(require,module,exports){
-/**
- * Created by vasy1 on 7/28/2016.
- */
-"use strict";
-
-var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
-var HomeHeader = require('./common/homePageHeader');
-var RouteHandler = require('react-router').RouteHandler;
-$ = jQuery = require('jquery');
-var Input = require('./common/textInput');
-var toastr = require('toastr');
-
-var HomePage = React.createClass({displayName: "HomePage",
-    getInitialState: function () {
-        return {
-            comment: null,
-            images: [
-                ['./Images/pic.gif', ['com1', 'com2', 'com3'], 10],
-                ['./Images/pic.gif', ['com1', 'com2'], 5],
-                ['./Images/pic.gif', [], 8],
-                ['./Images/pic.gif', ['com1', 'com2'], 5],
-                ['./Images/pic.gif', ['com1', 'com2'], 5],
-                ['./Images/pic.gif', ['com1', 'com2'], 5]
-            ]
-        };
-
-    }
-    , onCommentHandler: function (event) {
-        this.setState({comment: event.target.value});
-    },
-    onLikeHandler: function (event) {
-        console.log('Like/Unlike button was pressed!');
-    },
-    onCommentSubmitHandler: function (event) {
-        event.preventDefault();
-        console.log(this.state);
-        if (this.state.comment == null) {
-            toastr.error("Comment is empty");
-        } else {
-            $.ajax({
-                url: 'http://127.0.0.1:8000/api/v1/1/comments/'
-                , type: 'POST'
-                , data: this.comment
-            });
-        }
-    },
-    render: function () {
-
-        document.body.style.background = "#f3f3f3 no-repeat right top";
-        var likeHandle = this.onLikeHandler;
-        var commentHandle = this.onCommentHandler;
-        var commentSubmitHandle = this.onCommentSubmitHandler;
-        var self = this;
-        var tokenNumber = sessionStorage.getItem("authToken");
-        if (!tokenNumber) {
-            Router.HashLocation.push("login");
-        }
-        return (
-            React.createElement("div", null, 
-                React.createElement(HomeHeader, null), 
-                React.createElement("div", null, 
-                    React.createElement("div", {className: "fixed-action-btn"}, 
-                        React.createElement("a", {
-                            className: "btn-floating btn-large waves-effect waves-light blue"}, React.createElement("i", {
-                            className: "material-icons"}, "add"))
-                    ), 
-                    React.createElement("div", {className: "row text-center photoGrid"}, 
-                        React.createElement("div", {className: "col s10"}, 
-                            this.state.images.map(function (item, index) {
-                                return (
-                                    React.createElement("div", {className: "col s4"}, 
-                                        React.createElement("div", {className: "card sticky-action"}, 
-                                            React.createElement("div", {className: "card-image materialboxed"}, 
-                                                React.createElement("img", {src: item[0], id: 'image-' + index})
-                                            ), 
-                                            React.createElement("div", {className: "card-content"}, 
-                                        React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right tealColor"}, "chat_bubble"))
-                                            ), 
-                                            React.createElement("div", {className: "card-action"}, 
-                                                React.createElement("p", null, React.createElement("a", {href: "#", onClick: likeHandle}, React.createElement("i", {
-                                                    className: "small material-icons tealColor"}, "thumbs_up_down")), item[2]
-                                                )
-                                            ), 
-                                            React.createElement("div", {className: "card-reveal"}, 
-                                        React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
-                                            className: "material-icons right"}, "close")), 
-                                                React.createElement("p", null, React.createElement("br", null), item[1].map(function (comment, indexCom) {
-                                                    return (
-                                                        React.createElement("div", {id: 'comment-' + index + '-' + indexCom, 
-                                                             className: "left-align"}, 
-                                                            React.createElement("p", null, 
-                                                                React.createElement("div", {className: "chip"}, "UserId"), 
-                                                                comment)
-                                                        )
-                                                    );
-                                                })), 
-                                                React.createElement("p", null, React.createElement(Input, {placeholder: "Comment", 
-                                                          name: "comment", 
-                                                          inputChangeHandler: commentHandle}), 
-                                                    React.createElement("input", {type: "Submit", 
-                                                           className: "btn waves-effect waves-light", 
-                                                           value: "Comment", 
-                                                           onClick: commentSubmitHandle}))
-                                            )
-                                        )
-                                    )
-                                );
-                            }), " ")
-                    )
-                )
-            )
-        );
-
-    }
-});
-
-module.exports = HomePage;
-
-},{"./common/homePageHeader":200,"./common/textInput":202,"jquery":2,"react":196,"react-router":27,"toastr":197}],204:[function(require,module,exports){
-"use strict";
-
-var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
-var Input = require('./common/textInput');
-var PassInput = require('./common/passwordInput');
-var Header = require('./common/header');
-var toastr = require('toastr');
-
-var Login = React.createClass({displayName: "Login",
-    getInitialState: function () {
-        return {
-            username: null,
-            password: null
-        };
-    }
-    , userChangeHandler: function (event) {
-        this.setState({username: event.target.value});
-    },
-    passwordChangeHandler: function (event) {
-        this.setState({password: event.target.value});
-    },
-    formSubmitHandler: function (event) {
-        event.preventDefault();
-        console.log(this.state);
-        if (this.state.username == null) {
-            toastr.error("Username empty");
-        } else if (this.state.password == null) {
-            toastr.error("Password empty");
-        } else {
-            $.ajax({
-                url: 'http://127.0.0.1:8000/api/v1/login/'
-                , type: 'POST'
-                , data: this.state
-            }).then(function (data) {
-                sessionStorage.setItem('authToken', data.token);
-                sessionStorage.setItem('id', data.id);
-                Router.HashLocation.push('feed');
-                //redirect to homepage
-            });
-        }
-    },
-    render: function () {
-        document.body.style.background = "url('/Images/bg.jpg') no-repeat fixed center";
-        return (
-            React.createElement("div", null, 
-                React.createElement(Header, null), 
-                React.createElement("div", {className: "text-center jumbotron z-depth-2 formWidth"}, 
-                    React.createElement("form", null, 
-                        React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
-                        React.createElement(Input, {placeholder: "Username", 
-                               name: "username", 
-                               inputChangeHandler: this.userChangeHandler}
-                        ), 
-                        React.createElement(PassInput, {placeholder: "Password", 
-                                   name: "password", 
-                                   passwdChangeHandler: this.passwordChangeHandler}
-                        ), 
-                        React.createElement("input", {type: "Submit", 
-                               className: "btn waves-effect waves-light", 
-                               value: "Login", 
-                               onClick: this.formSubmitHandler})
-                    )
-                ), 
-                React.createElement("div", {className: "text-center jumbotron z-depth-2 accountMessage"}, 
-                    React.createElement("p", {id: "accountMessage"}, "Don't have an account?", React.createElement("br", null), 
-                        React.createElement(Link, {to: "register"}, " Sign Up"))
-                )
-            )
-        );
-    }
-
-});
-
-module.exports = Login;
-},{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27,"toastr":197}],205:[function(require,module,exports){
 /**
  * Created by vasy1 on 7/28/2016.
  */
@@ -32880,7 +32679,206 @@ module.exports = New;
 /**
  * Created by vasy1 on 8/2/2016.
  */
-},{"./common/homePageHeader":200,"./common/textInput":202,"jquery":2,"react":196,"react-router":27,"toastr":197}],206:[function(require,module,exports){
+},{"./common/homePageHeader":200,"./common/textInput":202,"jquery":2,"react":196,"react-router":27,"toastr":197}],204:[function(require,module,exports){
+/**
+ * Created by vasy1 on 7/28/2016.
+ */
+"use strict";
+
+var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
+var HomeHeader = require('./common/homePageHeader');
+var RouteHandler = require('react-router').RouteHandler;
+$ = jQuery = require('jquery');
+var Input = require('./common/textInput');
+var toastr = require('toastr');
+
+var HomePage = React.createClass({displayName: "HomePage",
+    getInitialState: function () {
+        return {
+            comment: null,
+            images: [
+                ['./Images/pic.gif', ['com1', 'com2', 'com3'], 10],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', [], 8],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', ['com1', 'com2'], 5],
+                ['./Images/pic.gif', ['com1', 'com2'], 5]
+            ]
+        };
+
+    }
+    , onCommentHandler: function (event) {
+        this.setState({comment: event.target.value});
+    },
+    onLikeHandler: function (event) {
+        console.log('Like/Unlike button was pressed!');
+    },
+    onCommentSubmitHandler: function (event) {
+        event.preventDefault();
+        console.log(this.state);
+        if (this.state.comment == null) {
+            toastr.error("Comment is empty");
+        } else {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/v1/1/comments/'
+                , type: 'POST'
+                , data: this.comment
+            });
+        }
+    },
+    render: function () {
+
+        document.body.style.background = "#f3f3f3 no-repeat right top";
+        var likeHandle = this.onLikeHandler;
+        var commentHandle = this.onCommentHandler;
+        var commentSubmitHandle = this.onCommentSubmitHandler;
+        var self = this;
+        var tokenNumber = sessionStorage.getItem("authToken");
+        if (!tokenNumber) {
+            Router.HashLocation.push("login");
+        }
+        return (
+            React.createElement("div", null, 
+                React.createElement(HomeHeader, null), 
+                React.createElement("div", null, 
+                    React.createElement("div", {className: "fixed-action-btn"}, 
+                        React.createElement("a", {
+                            className: "btn-floating btn-large waves-effect waves-light blue"}, React.createElement("i", {
+                            className: "material-icons"}, "add"))
+                    ), 
+                    React.createElement("div", {className: "row text-center photoGrid"}, 
+                        React.createElement("div", {className: "col s10"}, 
+                            this.state.images.map(function (item, index) {
+                                return (
+                                    React.createElement("div", {className: "col s4"}, 
+                                        React.createElement("div", {className: "card sticky-action"}, 
+                                            React.createElement("div", {className: "card-image materialboxed"}, 
+                                                React.createElement("img", {src: item[0], id: 'image-' + index})
+                                            ), 
+                                            React.createElement("div", {className: "card-content"}, 
+                                        React.createElement("span", {className: "card-title activator grey-text text-darken-4"}, React.createElement("i", {
+                                            className: "material-icons right tealColor"}, "chat_bubble"))
+                                            ), 
+                                            React.createElement("div", {className: "card-action"}, 
+                                                React.createElement("p", null, React.createElement("a", {href: "#", onClick: likeHandle}, React.createElement("i", {
+                                                    className: "small material-icons tealColor"}, "thumbs_up_down")), item[2]
+                                                )
+                                            ), 
+                                            React.createElement("div", {className: "card-reveal"}, 
+                                        React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
+                                            className: "material-icons right"}, "close")), 
+                                                React.createElement("p", null, React.createElement("br", null), item[1].map(function (comment, indexCom) {
+                                                    return (
+                                                        React.createElement("div", {id: 'comment-' + index + '-' + indexCom, 
+                                                             className: "left-align"}, 
+                                                            React.createElement("p", null, 
+                                                                React.createElement("div", {className: "chip"}, "UserId"), 
+                                                                comment)
+                                                        )
+                                                    );
+                                                })), 
+                                                React.createElement("p", null, React.createElement(Input, {placeholder: "Comment", 
+                                                          name: "comment", 
+                                                          inputChangeHandler: commentHandle}), 
+                                                    React.createElement("input", {type: "Submit", 
+                                                           className: "btn waves-effect waves-light", 
+                                                           value: "Comment", 
+                                                           onClick: commentSubmitHandle}))
+                                            )
+                                        )
+                                    )
+                                );
+                            }), " ")
+                    )
+                )
+            )
+        );
+
+    }
+});
+
+module.exports = HomePage;
+
+},{"./common/homePageHeader":200,"./common/textInput":202,"jquery":2,"react":196,"react-router":27,"toastr":197}],205:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
+var Input = require('./common/textInput');
+var PassInput = require('./common/passwordInput');
+var Header = require('./common/header');
+var toastr = require('toastr');
+
+var Login = React.createClass({displayName: "Login",
+    getInitialState: function () {
+        return {
+            username: null,
+            password: null
+        };
+    }
+    , userChangeHandler: function (event) {
+        this.setState({username: event.target.value});
+    },
+    passwordChangeHandler: function (event) {
+        this.setState({password: event.target.value});
+    },
+    formSubmitHandler: function (event) {
+        event.preventDefault();
+        console.log(this.state);
+        if (this.state.username == null) {
+            toastr.error("Username empty");
+        } else if (this.state.password == null) {
+            toastr.error("Password empty");
+        } else {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/v1/login/'
+                , type: 'POST'
+                , data: this.state
+            }).then(function (data) {
+                sessionStorage.setItem('authToken', data.token);
+                sessionStorage.setItem('id', data.id);
+                Router.HashLocation.push('feed');
+                //redirect to homepage
+            });
+        }
+    },
+    render: function () {
+        document.body.style.background = "url('/Images/bg.jpg') no-repeat fixed center";
+        return (
+            React.createElement("div", null, 
+                React.createElement(Header, null), 
+                React.createElement("div", {className: "text-center jumbotron z-depth-2 formWidth"}, 
+                    React.createElement("form", null, 
+                        React.createElement("img", {src: 'Images/logo1.png', className: "logo-resp"}), 
+                        React.createElement(Input, {placeholder: "Username", 
+                               name: "username", 
+                               inputChangeHandler: this.userChangeHandler}
+                        ), 
+                        React.createElement(PassInput, {placeholder: "Password", 
+                                   name: "password", 
+                                   passwdChangeHandler: this.passwordChangeHandler}
+                        ), 
+                        React.createElement("input", {type: "Submit", 
+                               className: "btn waves-effect waves-light", 
+                               value: "Login", 
+                               onClick: this.formSubmitHandler})
+                    )
+                ), 
+                React.createElement("div", {className: "text-center jumbotron z-depth-2 accountMessage"}, 
+                    React.createElement("p", {id: "accountMessage"}, "Don't have an account?", React.createElement("br", null), 
+                        React.createElement(Link, {to: "register"}, " Sign Up"))
+                )
+            )
+        );
+    }
+
+});
+
+module.exports = Login;
+},{"./common/header":199,"./common/passwordInput":201,"./common/textInput":202,"react":196,"react-router":27,"toastr":197}],206:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -33024,11 +33022,11 @@ var routes = (
             React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
             React.createElement(Route, {name: "login", handler: require('./components/loginPage')}), 
             React.createElement(Route, {name: "register", handler: require('./components/registerPage')}), 
-            React.createElement(Route, {name: "feed", handler: require('./components/new')}), 
+            React.createElement(Route, {name: "feed", handler: require('./components/feed')}), 
             React.createElement(Route, {name: "oldFeed", handler: require('./components/homePage')})
         )
     )
 );
 
 module.exports = routes;
-},{"./components/app":198,"./components/homePage":203,"./components/loginPage":204,"./components/new":205,"./components/notFoundPage":206,"./components/registerPage":207,"react":196,"react-router":27}]},{},[208]);
+},{"./components/app":198,"./components/feed":203,"./components/homePage":204,"./components/loginPage":205,"./components/notFoundPage":206,"./components/registerPage":207,"react":196,"react-router":27}]},{},[208]);
