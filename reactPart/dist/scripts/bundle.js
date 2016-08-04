@@ -32537,17 +32537,6 @@ var New = React.createClass({displayName: "New",
         }).then(function (data) {
             self.setState({images: data});
         });
-
-        $.ajax({
-            url: 'http://127.0.0.1:8000/api/v1/photos/1/like/'
-            , type: 'GET',
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("the error is " + textStatus + " " + errorThrown);
-            }
-        }).then(function (likesData) {
-            console.log(likesData);
-            self.setState({likes: likesData});
-        });
     },
     onCommentHandler: function (event) {
         this.setState({comment: event.target.value});
@@ -32563,29 +32552,36 @@ var New = React.createClass({displayName: "New",
             url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/like/'
             , type: 'POST'
         });
+        toastr.success("You pressed the like button!");
 
     },
     onCommentSubmitHandler: function (event) {
         event.preventDefault();
-        console.log(this.state);
-        var photoId = event.target.dataset.id;
         if (this.state.comment == null) {
             toastr.error("Comment is empty");
         } else {
             var token = sessionStorage.getItem("authToken");
-            //this.setState({user: sessionStorage.getItem("id")});
+            var photoId = event.target.dataset.id;
+            var params = {comment: this.state.comment, user: sessionStorage.getItem("id")};
+            console.log(params);
+            console.log(this.state);
+
             $.ajax({
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Token ' + token);
                 },
                 url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
                 , type: 'POST'
+                , data: this.state
+            }).then(function (data) {
+                window.location.reload();
             });
         }
     },
     showComments: function (event) {
         var photoId = event.target.dataset.id;
         var self = this;
+
         $.ajax({
             url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
             , type: 'GET'
@@ -32597,6 +32593,22 @@ var New = React.createClass({displayName: "New",
         this.setState({
             fetchComments: true
         });
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/like/'
+            , type: 'GET'
+            , error: function () {
+                console.log(arguments);
+            }
+            , success: function () {
+                console.log(arguments);
+            }
+        }).then(function (likesData) {
+            self.setState({likes: likesData});
+        });
+    },
+    handleImage: function (event) {
+        console.log("clicked upload image");
     },
     render: function () {
 
@@ -32614,8 +32626,9 @@ var New = React.createClass({displayName: "New",
                 React.createElement(HomeHeader, null), 
                 React.createElement("div", null, 
                     React.createElement("div", {className: "fixed-action-btn"}, 
-                        React.createElement("a", {
-                            className: "btn-floating btn-large waves-effect waves-light blue"}, React.createElement("i", {
+                        React.createElement("a", {role: "button", 
+                           className: "btn-floating btn-large waves-effect waves-light blue", 
+                           onClick: this.handleImage}, React.createElement("i", {
                             className: "material-icons"}, "add"))
                     ), 
                     React.createElement("div", {className: "row text-center photoGrid"}, 
@@ -32635,23 +32648,29 @@ var New = React.createClass({displayName: "New",
                                             ), 
                                             React.createElement("div", {className: "card-action"}, 
                                                 React.createElement("p", null, React.createElement("a", {role: "button", onClick: likeHandle}, React.createElement("i", {
-                                                    className: "small material-icons tealColor", "data-id": item.id}, "thumbs_up_down")), self.state.likes
+                                                    className: "small material-icons tealColor", "data-id": item.id}, "thumbs_up_down"))
                                                 )
                                             ), 
                                             React.createElement("div", {className: "card-reveal"}, 
                                                 React.createElement("span", {className: "card-title grey-text text-darken-4"}, React.createElement("i", {
                                                     className: "material-icons right"}, "close")), 
-                                                React.createElement("p", null, React.createElement("br", null), 
-                                                    self.state.comments.map(function (commItem) {
-                                                        return (
-                                                            React.createElement("div", {className: "left-align"}, 
-                                                                React.createElement("p", null, 
-                                                                    React.createElement("div", {className: "chip"}, commItem.user), 
-                                                                    commItem.comment
+                                                React.createElement("p", null, 
+                                                    React.createElement("div", {className: "chip"}, "Likes"), 
+                                                    React.createElement("div", {className: "chip"}, self.state.likes)
+                                                ), 
+                                                React.createElement("p", null, 
+                                                    React.createElement("ul", null, React.createElement("br", null), 
+                                                        self.state.comments.map(function (commItem) {
+                                                            return (
+                                                                React.createElement("div", {className: "left-align"}, 
+                                                                    React.createElement("li", null, 
+                                                                        React.createElement("div", {className: "chip"}, commItem.user), 
+                                                                        commItem.comment
+                                                                    )
                                                                 )
-                                                            )
-                                                        );
-                                                    })
+                                                            );
+                                                        })
+                                                    )
                                                 ), 
                                                 React.createElement("p", null, React.createElement(Input, {placeholder: "Comment", 
                                                           name: "comment", 

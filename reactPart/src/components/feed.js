@@ -36,17 +36,6 @@ var New = React.createClass({
         }).then(function (data) {
             self.setState({images: data});
         });
-
-        $.ajax({
-            url: 'http://127.0.0.1:8000/api/v1/photos/1/like/'
-            , type: 'GET',
-            error: function (xhr, textStatus, errorThrown) {
-                console.log("the error is " + textStatus + " " + errorThrown);
-            }
-        }).then(function (likesData) {
-            console.log(likesData);
-            self.setState({likes: likesData});
-        });
     },
     onCommentHandler: function (event) {
         this.setState({comment: event.target.value});
@@ -62,29 +51,36 @@ var New = React.createClass({
             url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/like/'
             , type: 'POST'
         });
+        toastr.success("You pressed the like button!");
 
     },
     onCommentSubmitHandler: function (event) {
         event.preventDefault();
-        console.log(this.state);
-        var photoId = event.target.dataset.id;
         if (this.state.comment == null) {
             toastr.error("Comment is empty");
         } else {
             var token = sessionStorage.getItem("authToken");
-            //this.setState({user: sessionStorage.getItem("id")});
+            var photoId = event.target.dataset.id;
+            var params = {comment: this.state.comment, user: sessionStorage.getItem("id")};
+            console.log(params);
+            console.log(this.state);
+
             $.ajax({
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Token ' + token);
                 },
                 url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
                 , type: 'POST'
+                , data: this.state
+            }).then(function (data) {
+                window.location.reload();
             });
         }
     },
     showComments: function (event) {
         var photoId = event.target.dataset.id;
         var self = this;
+
         $.ajax({
             url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
             , type: 'GET'
@@ -96,6 +92,22 @@ var New = React.createClass({
         this.setState({
             fetchComments: true
         });
+
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/like/'
+            , type: 'GET'
+            , error: function () {
+                console.log(arguments);
+            }
+            , success: function () {
+                console.log(arguments);
+            }
+        }).then(function (likesData) {
+            self.setState({likes: likesData});
+        });
+    },
+    handleImage: function (event) {
+        console.log("clicked upload image");
     },
     render: function () {
 
@@ -113,8 +125,9 @@ var New = React.createClass({
                 <HomeHeader/>
                 <div>
                     <div className="fixed-action-btn">
-                        <a
-                            className="btn-floating btn-large waves-effect waves-light blue"><i
+                        <a role="button"
+                           className="btn-floating btn-large waves-effect waves-light blue"
+                           onClick={this.handleImage}><i
                             className="material-icons">add</i></a>
                     </div>
                     <div className="row text-center photoGrid">
@@ -134,23 +147,29 @@ var New = React.createClass({
                                             </div>
                                             <div className="card-action">
                                                 <p><a role="button" onClick={likeHandle}><i
-                                                    className="small material-icons tealColor" data-id={item.id}>thumbs_up_down</i></a>{self.state.likes}
+                                                    className="small material-icons tealColor" data-id={item.id}>thumbs_up_down</i></a>
                                                 </p>
                                             </div>
                                             <div className="card-reveal">
                                                 <span className="card-title grey-text text-darken-4"><i
                                                     className="material-icons right">close</i></span>
-                                                <p><br/>
-                                                    {self.state.comments.map(function (commItem) {
-                                                        return (
-                                                            <div className="left-align">
-                                                                <p>
-                                                                    <div className="chip">{commItem.user}</div>
-                                                                    {commItem.comment}
-                                                                </p>
-                                                            </div>
-                                                        );
-                                                    })}
+                                                <p>
+                                                    <div className="chip">Likes</div>
+                                                    <div className="chip">{self.state.likes}</div>
+                                                </p>
+                                                <p>
+                                                    <ul><br/>
+                                                        {self.state.comments.map(function (commItem) {
+                                                            return (
+                                                                <div className="left-align">
+                                                                    <li>
+                                                                        <div className="chip">{commItem.user}</div>
+                                                                        {commItem.comment}
+                                                                    </li>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </ul>
                                                 </p>
                                                 <p><Input placeholder="Comment"
                                                           name="comment"

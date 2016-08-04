@@ -60,7 +60,7 @@ def like(request, id_photo):
 
         # for likes from all users at particular photo
         counter = Like.objects.filter(photo_id=id_photo).count()
-        return Response(status=status.HTTP_302_FOUND, data=counter)
+        return Response(status=status.HTTP_202_ACCEPTED, data=counter)
     if request.method == 'POST':
         if Like.objects.filter(photo=id_photo, user=request.user.id).count() == 0:
             Like.objects.create(photo_id=id_photo, user=request.user).save()
