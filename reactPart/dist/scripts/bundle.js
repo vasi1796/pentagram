@@ -32562,19 +32562,19 @@ var New = React.createClass({displayName: "New",
         } else {
             var token = sessionStorage.getItem("authToken");
             var photoId = event.target.dataset.id;
-            var params = {comment: this.state.comment, user: sessionStorage.getItem("id")};
-            console.log(params);
-            console.log(this.state);
-
+            var params = new FormData();
+            params.append('user', sessionStorage.getItem("id"));
+            params.append('comment', this.state.comment);
             $.ajax({
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Token ' + token);
                 },
                 url: 'http://127.0.0.1:8000/api/v1/photos/' + photoId + '/comments/'
                 , type: 'POST'
-                , data: this.state
-            }).then(function (data) {
+                , data: params
+            }).then(function () {
                 window.location.reload();
+                toastr.success("You posted a comment!");
             });
         }
     },
@@ -32609,6 +32609,7 @@ var New = React.createClass({displayName: "New",
     },
     handleImage: function (event) {
         console.log("clicked upload image");
+        console.log(this.state);
     },
     render: function () {
 
@@ -32627,9 +32628,8 @@ var New = React.createClass({displayName: "New",
                 React.createElement("div", null, 
                     React.createElement("div", {className: "fixed-action-btn"}, 
                         React.createElement("a", {role: "button", 
-                           className: "btn-floating btn-large waves-effect waves-light blue", 
-                           onClick: this.handleImage}, React.createElement("i", {
-                            className: "material-icons"}, "add"))
+                           className: "btn-floating btn-large waves-effect waves-light blue"}, 
+                            React.createElement("i", {className: "material-icons"}, "add"))
                     ), 
                     React.createElement("div", {className: "row text-center photoGrid"}, 
                         React.createElement("div", {className: "col s10"}, 
@@ -32679,7 +32679,8 @@ var New = React.createClass({displayName: "New",
                                                            className: "btn waves-effect waves-light", 
                                                            "data-id": item.id, 
                                                            value: "Comment", 
-                                                           onClick: commentSubmitHandle}))
+                                                           onClick: commentSubmitHandle})
+                                                )
                                             )
                                         )
                                     )
@@ -32690,7 +32691,6 @@ var New = React.createClass({displayName: "New",
                 )
             )
         );
-
     }
 });
 
