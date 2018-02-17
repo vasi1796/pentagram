@@ -15,19 +15,19 @@ def photos_directory(instance, filename):
 
 
 class Photo(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
     photo = models.ImageField(upload_to=photos_directory, null=True)
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User)
-    photo = models.ForeignKey(Photo)
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    photo = models.ForeignKey(Photo,on_delete=models.DO_NOTHING)
     comment = models.TextField(null=False)
 
 
 class Like(models.Model):
-    photo = models.ForeignKey(Photo)
-    user = models.ForeignKey(User)
+    photo = models.ForeignKey(Photo,on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

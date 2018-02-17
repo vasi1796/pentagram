@@ -28,7 +28,7 @@ urlpatterns = [
                   url(r'^api/v1/photos/(?P<id_photo>[0-9]*)/comments/$', comments, name="comments"),
                   url(r'^api/v1/photos/$', photos, name='photos'),
                   url(r'^api/v1/users/$', users, name='users'),
-                  url(r'^admin/', include(admin.site.urls)),
+                  url(r'^admin/', admin.site.urls),
                   url(r'^user/login', auth_views.login, {'template_name': 'login.html'}, name="login"),
                   url(r'^$', TemplateView.as_view(template_name='index.html'), name="homepage"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

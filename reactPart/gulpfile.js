@@ -79,11 +79,9 @@ gulp.task('images', function() {
 
 gulp.task('lint', function() {
     return gulp.src(config.paths.js)
-        .pipe(lint({
-            config: 'eslint.config.json'
-        }))
         .pipe(lint.format());
 });
+
 
 gulp.task('watch', function() {
     gulp.watch(config.paths.html, ['html']);
